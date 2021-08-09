@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <title>Nishan Shehadeh Personal Website</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,6 +14,10 @@
 
   <link rel="manifest" href="site.webmanifest">
   <link rel="apple-touch-icon" href="icon.png">
+  <!-- Links to fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@600&family=Fira+Sans:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@600&display=swap" rel="stylesheet">
+
   <!-- Place favicon.ico in the root directory -->
 
   <link rel="stylesheet" href="css/normalize.css">
@@ -23,9 +27,108 @@
 </head>
 
 <body>
+  <header>
+    <div class = "logo">
+      <img src = "img/devjane.png" alt = "">
+    </div>
+    <button class = "nav-toggle" aria-label = "toggle navigation">
+      <span class = "hamburger"></span>
+    </button>
+    <nav class = "nav">
+      <ul class = "nav_list">
+        <li class = "nav_item"><a href = "#home" class = "nav__link"> Intro</a> </li>
+        <li class = "nav_item"><a href = "#services" class = "nav__link"> About Me</a> </li>
+        <li class = "nav_item"><a href = "#about" class = "nav__link"> Projects</a> </li>
+        <li class = "nav_item"><a href = "#" class = "nav__link"> Interests</a> </li>
+      </ul>
+    </nav>
+  </header>
+  <!-- Introduction -->
+  <section class = "intro" id = "home">
+    <h1 class = "section_title_intro section_title-intro">
+      Hi, I am <strong> Nishan Shehadeh </strong>
+    </h1>
+    <p class = "section_subtitle section_subtitle-intro"> Student at Vanderbilt</p>
+    <img src = "img/dev-jane01.jpg" alt="A picture of me">
+  </section>
 
+  <!-- Services  -->
+  <section class = "What I do" id = "services">
+    <h2 class = "section_title section_title-services"> Who am I? </h2>
+    <div class = "services">
+      <div class = "service">
+        <h3>Interest 1</h3>
+        <p>Something about interest 1</p>
+      </div>
+
+      <div class = "service">
+        <h3>Interest 2</h3>
+        <p>Something about interest 2</p>
+      </div>
+
+      <div class = "service">
+        <h3>Interest 3</h3>
+        <p>Something about interest 3</p>
+      </div>
+
+    </div>
+  </section>
+  <!-- About me -->
+  <section class = "about-me" id = "about">
+    <h2 class = "secoint_title section_title-about">Who I am</h2>
+    <p class = "section_subtitle section_subtitle-about"></p>
+
+    <div class = "about-me_body">
+      <p></p>
+      <p></p>
+    </div>
+    <img src = "img/devjane-02.jpg" alt = "Photo of Nishan">
+  </section>
+  <!-- My work -->
+  <section class = "my-work" id = "work">
+    <h2 class = "seciotn_title">My work</h2>
+    <p class = "section_subtitle"></p>
+
+    <div class = "portfolio">
+      <!-- Portfolio item 1 -->
+      <a href = "#" class = "portfolio_item">
+        <img src = "portfolio1.jpg" alt = "DESCRIPTION" class = portfolio_img>
+      </a>
+
+      <!-- Portfolio item 2 -->
+      <a href = "#" class = "portfolio_item">
+        <img src = "portfolio2.jpg" alt = "DESCRIPTION" class = portfolio_img>
+      </a>
+
+      <!-- Portfolio item 3 -->
+      <a href = "#" class = "portfolio_item">
+        <img src = "portfolio3.jpg" alt = "DESCRIPTION" class = portfolio_img>
+      </a>
+
+      <!-- Portfolio item 4 -->
+      <a href = "#" class = "portfolio_item">
+        <img src = "portfolio4.jpg" alt = "DESCRIPTION" class = portfolio_img>
+      </a>
+
+      <!-- Portfolio item 5 -->
+      <a href = "#" class = "portfolio_item">
+        <img src = "portfolio5.jpg" alt = "DESCRIPTION" class = portfolio_img>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <a href = "mailto:nishan.g.shehadeh@vanderbilt.edu" class = "footer-email"> nishan.g.shehadeh@vanderbilt.edu</a>
+    <ul class = "social_list">
+      <li class  = "social_list_item"><a class = "social_list_link" href = "https://www.linkedin.com/in/nishan-shehadeh
+">LinkedIn</a></li>
+      <li class  = "social_list_item"><a class = "social_list_link" href = "https://www.instagram.com/ngs4/">Instagram</a></li>
+      <li class  = "social_list_item"><a class = "social_list_link" href = "https://www.vanderbilt.edu/vise/vise-affiliated-labs/#beam">Undergraduate Lab</a></li>
+
+    </ul>
+  </footer>
   <!-- Add your site or application content here -->
-  <h1>Hello Madelyn Wilson!</h1>
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="js/plugins.js"></script>
   <script src="js/main.js"></script>
@@ -33,7 +136,7 @@
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
   <script>
     window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+    ga('create', 'G-5H9RTKTMCD', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
   </script>
   <script src="https://www.google-analytics.com/analytics.js" async></script>
 </body>
