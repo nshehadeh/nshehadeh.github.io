@@ -96,19 +96,22 @@ textarea {
 /* Custom Properties */
 :root{
   --ff-primary: 'Fira Sans', fira-sans ;
-  --ff0secondary: 'Fira Code', fira-code;
+  --ff-secondary: 'Fira Code', fira-code;
 
   --fw-reg: 300;
   --fw-bold: 900;
 
-  --clr-bg: fff;
-  --clr-text: 60 30 90;
-  --clr-accent: #03adfc;
+  --clr-bg: 255 255 255;
+  --clr-text: #FBF8BE;
+  --clr-accent: #234E70;
 
   --fs--h1: 3rem;
   --fs-h2: 2.25rem;
   --fs-h3: 1.25 rem;
   --fs-body: 1rem;
+
+  --bs: 0.25em 0.25em 0.75em rgba(0,0,0,0.25), 0.125em 0.125em 0.25em rgba(0,0,0,.15); /* Box Shadow */
+
 }
 
 @media (min-width:800px){
@@ -129,13 +132,18 @@ body{
   font-size: var(--fs-body);
   line-height: 1.6;
 }
-
+section{
+  padding: 5em 1.5em;
+}
 img{
   display: block;
   max-width: 100%;
 }
 strong{font-weight: bold}
-
+:focus{
+  outline: 3px solid var(--clr-accent);
+  outline-offset: 3px;
+}
 /* Typography */
 h1,
 h2,
@@ -160,9 +168,74 @@ h3{font-size: var(--fs-h3)}
 }
 .section_subtitle-intro, .section_subtitle-about{
   background: var(--clr-accent);
-  font-family: var(--ff0secondary);
+  font-family: var(--ff-secondary);
+  margin-bottom: 1em;
+  padding: 0.25em 1em;
+}
+/*header */
+nav{
+  display: none;
 }
 
+/* Intro Section */
+.intro{
+  position: relative;
+  }
+.intro_img{
+  box-shadow: var(--bs);
+}
+@media (min-width: 600px){
+  .intro{
+    display: grid;
+    grid-template-areas: "img title" "image subtitle";
+    grid-template-columns: min-content;
+    grid-column-gap: 1em;
+    width: min-content;
+    margin: 0 auto;
+  }
+
+  .intro_img{
+    grid-area: img;
+    min-width: 250px; /* doesnt disspear */
+    position: relative;
+    z-index: 2;
+  }
+  .section_subtitle-intro{
+    align-self: start;
+    grid-column: -1/1;
+    grid-row: 2;
+    text0align: right;
+    position: relative;
+    left: -1.5em;
+    width: calc(100% + 1.5em);
+  }
+}
+
+/* My services section */
+
+/* About me */
+.about-me{
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.about-me_img{
+  box-shadow: var(--bs);
+}
+@media (min-width: 600px){
+  .about-me{
+    display:grid;
+    grid-template-columns: 1fr 200px;
+    grid-template-areas: "title img" "subtitle img" "text img";
+    grid-column-gap: 2em;
+  }
+  .section_title-about, section_subtitle-about{
+    grid-column: 1;
+  }
+  .about-me_img{
+    grid-row: 1/-1;
+    grid-column: 2;
+  }
+}
 /* ==========================================================================
    Helper classes
    ========================================================================== */
