@@ -102,8 +102,10 @@ textarea {
   --fw-bold: 900;
 
   --clr-bg: 255 255 255;
-  --clr-text: #FBF8BE;
-  --clr-accent: #234E70;
+  --clr-light: #FBF8BE;
+  --clr-accent: #ACf8;
+  --clr-dark: #234E70;
+
 
   --fs--h1: 3rem;
   --fs-h2: 2.25rem;
@@ -124,6 +126,9 @@ textarea {
 }
 
 /* General Styles */
+html{
+  scroll-behavior: smooth;
+}
 body{
   background: var(--clr-bg);
   /* color: var(--clr-dark) */
@@ -172,10 +177,97 @@ h3{font-size: var(--fs-h3)}
   margin-bottom: 1em;
   padding: 0.25em 1em;
 }
-/*header */
-nav{
-  display: none;
+.section_subtitle-work{
+  color: var(--clr-accent);
+  font-weight: var(--fw-bold);
+  margin-bottom: 2em;
 }
+/*header */
+.header{
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+}
+.logo{
+  max-width: 100px;
+}
+.nav{
+  position: fixed;
+  background: var(--clr-dark);
+  color: var(--clr-light);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100; /*Pull in front when open*/
+
+  transform: translateX(100%);
+  transition: transform 250ms cubic-bezier(.5,0,.5,1);
+}
+.nav_list{
+  list-style: none;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+.nav_link{
+  color: inherit;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h3);
+  text-decoration: none;
+}
+.nav_link:hover{
+  color: var(--clr-accent);
+}
+.nav-toggle{
+  padding: 0.5em;
+  background: var(--clr-accent);
+  border: 0;
+  cursor: pointer;
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  z-index: 1000;
+}
+.nav-open .nav{
+  transform: translateX(0);
+}
+.nav-open .nav-toggle{
+  position: fixed;
+}
+.nav-open .hamburger{
+  transform: rotate(90deg);
+}
+.nav-open .hamburger::before{
+  transform: rotate(90deg) translateX(-6px);
+}
+.nav-open .hamburger::after{
+  opacity: 0;
+}
+.hamburger{
+  display: block;
+  position: relative;
+}
+.hamburger::before, .hamburger::after, .hamburger{
+  background: var(--clr-dark);
+  width: 2em;
+  height: 3px;
+  border-radius: 1em;
+  transition: transform 250ms ease-in-out;
+}
+.hamburger::before, .hamburger::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+.hamburger::before{top: 6px;}
+.hamburger::after{bottom: 6px;}
+
 
 /* Intro Section */
 .intro{
@@ -204,7 +296,7 @@ nav{
     align-self: start;
     grid-column: -1/1;
     grid-row: 2;
-    text0align: right;
+    text-align: right;
     position: relative;
     left: -1.5em;
     width: calc(100% + 1.5em);
@@ -228,13 +320,85 @@ nav{
     grid-template-areas: "title img" "subtitle img" "text img";
     grid-column-gap: 2em;
   }
-  .section_title-about, section_subtitle-about{
-    grid-column: 1;
+  .section_title-about{
+    grid-area: title;
+  }
+  .section_subtitle-about{
+    grid-column: 1/-1;
+    grid-row: 2;
+    position: relative;
+    left: -2em;
+    width: calc(100% + 4em);
+    padding-left: 2em;
+    padding-right: calc(200px + 4em);
+
   }
   .about-me_img{
-    grid-row: 1/-1;
-    grid-column: 2;
+    /*grid-row: 1/-1;  Starting at top ending at last row automatically  */
+    grid-area: img;
   }
+}
+
+/* Portfolio Section */
+.my-work{
+  background-color: var(--clr-dark);
+  color: var(--clr-light);
+  text-align: center;
+}
+.portfolio{
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); /*Play around with min max */
+}
+.portfolio_item{
+  background: var(--clr-accent);
+  overflow: hidden;
+}
+.portfolio_img{
+  transition:
+    transform 750ms cubic-bezier(.5, 0, .5, 1),
+    opacity 250ms linear;
+}
+.portfolio_item:focus{
+  position: relative;
+  z-index: 2;
+}
+.portfolio_img:hover, portfolio_item:focus .portfolio_img{
+  transform: scale(1,2);
+  opacity(0.80); /* Higher is more color coming through */
+}
+/* Footer Section */
+.footer{
+  background: var(--clr-light);
+  color: var(--clr-dark);
+  text-align: center;
+  padding: 2.5em 0;
+  font-size: var(--fs-h3);
+
+}
+.footer a{ color: inherit;
+text-decoration: none;}
+
+.footer_link{
+  font-weight: var(--fw-bold);
+}
+.footer_link:hover,.social-list_link:hover{
+  opacity: .7;
+}
+.footer_link:hover{
+  text-decoration: underline;
+}
+.social-list{
+  list-style: none;
+  display:flex;
+  justify-content:center;
+  margin: 2em 0 0;
+  padding: 0;
+}
+.social-list_item{
+  margin: 0 0.5em;
+}
+.social-list_link{
+  padding: 0.5em;
 }
 /* ==========================================================================
    Helper classes
