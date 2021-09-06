@@ -99,12 +99,12 @@ textarea {
   --ff-secondary: 'Fira Code', fira-code;
 
   --fw-reg: 300;
-  --fw-bold: 900;
+  --fw-bold: 600;
 
   --clr-bg: 255 255 255;
-  --clr-light: #FBF8BE;
-  --clr-accent: #ACf8;
-  --clr-dark: #234E70;
+  --clr-light: #1E2839;
+  --clr-accent: #647187;
+  --clr-dark: #E3E4E6;
 
 
   --fs-h1: 3rem;
@@ -116,12 +116,12 @@ textarea {
 
 }
 
-@media (min-width:800px){
+@media (min-width:600px){
   :root{
     --fs-h1: 4.5rem;
     --fs-h2: 3.75rem;
     --fs-h3:1.5rem;
-    --fs-body: 1.124rem;
+    --fs-body: 1.3rem;
   }
 }
 
@@ -130,7 +130,7 @@ html{
   scroll-behavior: smooth;
 }
 body{
-  background: var(--clr-bg);
+  background: var(--clr-dark);
   /* color: var(--clr-dark) */
   margin: 0;
   font-family: var(--ff-primary);
@@ -163,27 +163,39 @@ h3{font-size: var(--fs-h3)}
 
 .section_title{
   margin-bottom: 0.25em;
+  text-align: center;
+  color: var(--clr-light);
 }
 .section_title-intro{
   font-weight: var(--fw-reg);
+  /*color: var(--clr-light);*/
+  padding-bottom: 0.2em;
+
 }
-.seciton_subtitle{
+
+.section_subtitle{
   margin:0;
   font-size: var(--fs-h3);
+  color: var(--clr-light);
+  background: var(--clr-accent);
+  font-family: var(--ff-secondary);
+  padding: 0.25em 1em;
+  margin-bottom: 1em;
+  text-align: center;
 }
-.section_subtitle-intro, .section_subtitle-about{
+/*
+.section_subtitle-intro{
   background: var(--clr-accent);
   font-family: var(--ff-secondary);
   margin-bottom: 1em;
-  padding: 0.25em 1em;
-}
-.section_subtitle_projects{
-  color: var(--clr-accent);
-  font-weight: var(--fw-bold);
-  margin-bottom: 2em;
+}*/
+
+.section_subtitle-intro, .section_subtitle_projects, .section_subtitle-about{
+
+
 }
 .portfolio_img_overlay {
-  color: var(--clr-light);
+  color: var(--clr-dark);
   font-family: var(--ff-secondary);
   position: absolute;
   top: 0;
@@ -211,7 +223,7 @@ h3{font-size: var(--fs-h3)}
 }
 .nav{
   position: fixed;
-  background: var(--clr-dark);
+  background: var(--clr-accent);
   color: var(--clr-light);
   top: 0;
   bottom: 0;
@@ -297,7 +309,7 @@ h3{font-size: var(--fs-h3)}
 @media (min-width: 600px){
   .intro{
     display: grid;
-    grid-template-areas: "img title" "image subtitle";
+    grid-template-areas: "img title" "img subtitle";
     grid-template-columns: min-content;
     grid-column-gap: 1em;
     width: min-content;
@@ -321,12 +333,14 @@ h3{font-size: var(--fs-h3)}
   }
 }
 
-/* My services section */
 
 /* About me */
 .about-me{
-  max-width: 1000px;
+  /*max-width: 1000px;*/
   margin: 0 auto;
+  background: var(--clr-dark);
+  color: var(--clr-light);
+
 }
 .about-me_img{
   box-shadow: var(--bs);
@@ -337,22 +351,23 @@ h3{font-size: var(--fs-h3)}
     align-items: center;
 
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: "title img" "subtitle img" "text img";
+    grid-template-areas: "title title" "subtitle subtitle" "text img";
     grid-column-gap: 2em;
   }
 
   .section_title-about {
     grid-area: title;
+    grid-column: 1/-1;
   }
 
   .section_subtitle-about {
     grid-column: 1/-1;
     grid-row: 2;
     position: relative;
-    left: -2em;
-    width: calc(100% + 4em);
+    /*left: -2em;
+    width: calc(100% + 4em);*/
     padding-left: 2em;
-    padding-right: calc(200px + 4em);
+    /*padding-right: calc(200px + 4em);*/
 
   }
 
@@ -364,6 +379,7 @@ h3{font-size: var(--fs-h3)}
     flex-direction:column;
     justify-content:center;
     text-align:center;
+    margin-top: 3.5em;
   }
 }
 
@@ -371,14 +387,13 @@ h3{font-size: var(--fs-h3)}
 .projects{
   background-color: var(--clr-dark);
   color: var(--clr-light);
-  text-align: center;
 }
 .portfolio{
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); /*Play around with min max */
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); /*Play around with min max */
 }
 .portfolio_item{
-  background: var(--clr-accent);
+  background: white;
   overflow: hidden;
   position: relative;
   text-align: center;
@@ -415,6 +430,14 @@ h3{font-size: var(--fs-h3)}
 }
 .portfolio_img_overlay:hover > *{
   transform: translateY(0);
+}
+@media(max-width: 500px){
+  .portfolio_img_overlay{
+    opacity:1;
+  }
+  .portfolio_img_overlay--blur{
+    backdrop-filter: blur(2px);
+  }
 }
 /*
 .portfolio_img_overlay:focus{

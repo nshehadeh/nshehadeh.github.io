@@ -15,8 +15,8 @@
   <link rel="manifest" href="site.webmanifest">
   <link rel="apple-touch-icon" href="icon.png">
   <!-- Links to fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@600&family=Fira+Sans:wght@300&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 
   <!-- Place favicon.ico in the root directory -->
 
@@ -37,11 +37,12 @@
     </button>
     <nav class = "nav">
       <ul class = "nav_list">
-        <li class = "nav_item"><a href = "#home" class = "nav_link"> Intro</a> </li>
         <li class = "nav_item"><a href = "#about" class = "nav_link"> About Me</a> </li>
         <li class = "nav_item"><a href = "#projects" class = "nav_link"> Projects</a> </li>
-       <!-- <li class = "nav_item"><a href = "#work" class = "nav_link"> Work Experience</a> </li>
-        <li class = "nav_item"><a href = "#interests" class = "nav_link"> Interests</a> </li> -->
+        <li class = "nav_item"><a href = "#contact" class = "nav_link"> Contact</a> </li>
+
+        <!-- <li class = "nav_item"><a href = "#work" class = "nav_link"> Work Experience</a> </li>
+         <li class = "nav_item"><a href = "#interests" class = "nav_link"> Interests</a> </li> -->
       </ul>
     </nav>
   </header>
@@ -50,7 +51,7 @@
     <h1 class = "section_title_intro section_title-intro">
       Hi, I am <strong>Nishan Shehadeh</strong>
     </h1>
-    <p class = "section_subtitle section_subtitle-intro"> Portfolio Website, Student in Nashville, TN</p>
+    <p class = "section_subtitle section_subtitle-intro">Student at Vanderbilt</p>
     <img src = "img/profpic.jpg" alt="A picture of me" class = "intro_img">
   </section>
 
@@ -79,7 +80,7 @@
   <!-- About me -->
   <section class = "about-me" id = "about">
     <h2 class = "section_title section_title-about">About Me</h2>
-    <p class = "section_subtitle section_subtitle-about">Third Year Student at Vanderbilt University</p>
+    <p class = "section_subtitle section_subtitle-about">Third Year Student, School of Engineering</p>
 
     <div class = "about-me_body">
       <p>I am going into my junior year of college at Vanderbilt University studying computer science. I am enrolled
@@ -105,7 +106,14 @@
           <p class = "portfolio_img_description">Matlab, MEX, CUDA, GUI Design</p>
         </div>
       </a>
-
+      <!-- Portfolio item 3 -->
+      <a href = "#" class = "portfolio_item">
+        <img src = "img/portfolio3.png" alt = "DESCRIPTION" class = portfolio_img>
+        <div class = "portfolio_img_overlay image_overlay--blur">
+          <div class = "portfolio_img_title">Caritas Login/ Food Ordering App</div>
+          <p class = "portfolio_img_description">NodeJS++, MongoDB, CSS</p>
+        </div>
+      </a>
       <!-- Portfolio item 2 -->
       <a href = "#" class = "portfolio_item">
         <img src = "img/portfolio2.png" alt = "DESCRIPTION" class = portfolio_img>
@@ -115,38 +123,30 @@
         </div>
       </a>
 
-      <!-- Portfolio item 3 -->
-      <a href = "#" class = "portfolio_item">
-        <img src = "portfolio3.jpg" alt = "DESCRIPTION" class = portfolio_img>
-      </a>
-
       <!-- Portfolio item 4 -->
       <a href = "#" class = "portfolio_item">
-        <img src = "portfolio4.jpg" alt = "DESCRIPTION" class = portfolio_img>
+        <img src = "img/portfolio4.png" alt = "DESCRIPTION" class = portfolio_img>
+        <div class = "portfolio_img_overlay image_overlay--blur">
+          <div class = "portfolio_img_title">This website!</div>
+          <p class = "portfolio_img_description">HTML 5, CSS (lots of cool features)</p>
+        </div>
       </a>
 
-      <!-- Portfolio item 5 -->
-      <a href = "#" class = "portfolio_item">
-        <img src = "portfolio5.jpg" alt = "DESCRIPTION" class = portfolio_img>
-      </a>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class = "footer">
+  <footer class = "footer" id = "contact">
     <a href = "mailto:nishan.g.shehadeh@vanderbilt.edu" class = "footer-email"> nishan.g.shehadeh@vanderbilt.edu</a>
-    <ul class = "social_list">
-      <li class  = "social_list_item">
-        <a class = "social_list_link" href = "https://www.linkedin.com/in/nishan-shehadeh
-">
-          <i class="fab fa-linkedin"></i>
-        </a>
+    <ul class = "social-list">
+      <li class  = "social-list_item">
+        <a class = "social-list_link" href = "https://www.linkedin.com/in/nishan-shehadeh">LinkedIn</a>
       </li>
-      <li class  = "social_list_item">
-        <a class = "social_list_link" href = "https://www.instagram.com/ngs4/">Instagram</a>
+      <li class  = "social-list_item">
+        <a class = "social-list_link" href = "https://www.vanderbilt.edu/vise/vise-affiliated-labs/#beam">Undergraduate Lab</a>
       </li>
-      <li class  = "social_list_item">
-        <a class = "social_list_link" href = "https://www.vanderbilt.edu/vise/vise-affiliated-labs/#beam">Undergraduate Lab</a>
+      <li class  = "social-list_item">
+        <a class = "social-list_link" href = "https://github.com/nshehadeh">GitHub</a>
       </li>
 
     </ul>
