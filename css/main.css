@@ -102,8 +102,8 @@ textarea {
   --fw-bold: 600;
 
   --clr-bg: 255 255 255;
-  --clr-light: #1E2839;
-  --clr-accent: #647187;
+  --clr-light: #152238;
+  --clr-accent: #b0bec5;
   --clr-dark: #E3E4E6;
 
 
@@ -144,7 +144,7 @@ img{
   display: block;
   max-width: 100%;
 }
-strong{font-weight: var(--fw-bold);}
+strong{font-weight: var(--fw-bold); color: var(--clr-light);}
 :focus{
   outline: 3px solid var(--clr-accent);
   outline-offset: 3px;
@@ -207,6 +207,7 @@ h3{font-size: var(--fs-h3)}
 
 .portfolio_img_title{
   font-size: var(--fs-h3);
+  margin-top: 1em;
 }
 .image_description{
   font-size: var(--fs-body);
@@ -223,8 +224,8 @@ h3{font-size: var(--fs-h3)}
 }
 .nav{
   position: fixed;
-  background: var(--clr-accent);
-  color: var(--clr-light);
+  background: var(--clr-light);
+  color: var(--clr-dark);
   top: 0;
   bottom: 0;
   left: 0;
@@ -283,7 +284,7 @@ h3{font-size: var(--fs-h3)}
   position: relative;
 }
 .hamburger::before, .hamburger::after, .hamburger{
-  background: var(--clr-dark);
+  background: var(--clr-light);
   width: 2em;
   height: 3px;
   border-radius: 1em;
