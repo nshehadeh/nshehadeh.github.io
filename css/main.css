@@ -331,17 +331,21 @@ h3{font-size: var(--fs-h3)}
 .about-me_img{
   box-shadow: var(--bs);
 }
-@media (min-width: 600px){
-  .about-me{
-    display:grid;
-    grid-template-columns: 1fr 200px;
+@media (min-width: 600px) {
+  .about-me {
+    display: grid;
+    align-items: center;
+
+    grid-template-columns: 1fr 1fr;
     grid-template-areas: "title img" "subtitle img" "text img";
     grid-column-gap: 2em;
   }
-  .section_title-about{
+
+  .section_title-about {
     grid-area: title;
   }
-  .section_subtitle-about{
+
+  .section_subtitle-about {
     grid-column: 1/-1;
     grid-row: 2;
     position: relative;
@@ -351,9 +355,15 @@ h3{font-size: var(--fs-h3)}
     padding-right: calc(200px + 4em);
 
   }
-  .about-me_img{
+
+  .about-me_img {
     /*grid-row: 1/-1;  Starting at top ending at last row automatically  */
     grid-area: img;
+    z-index: 2;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    text-align:center;
   }
 }
 
@@ -377,7 +387,7 @@ h3{font-size: var(--fs-h3)}
 .portfolio_img{
   display: block;
   width: 100%;
-  height: 100%
+  height: 100%;
   object-fit: cover;
 }
 
