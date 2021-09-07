@@ -486,6 +486,28 @@ text-decoration: none;}
 .social-list_link{
   padding: 0.5em;
 }
+.project-page_body{
+ position: relative;
+}
+.demo_vid{
+  width: 100%;
+  height: 100%;
+}
+/*
+@media (max-width: 600px){
+  .project-page_vid{
+    width: 100%;
+    height: 100%;
+  }
+}*/
+@media (min-width: 600px) {
+  .project-page_body{
+    margin: 0 auto;
+    background: var(--clr-dark);
+    padding: 0.5em 2em;
+    width: 75%;
+  }
+}
 /* ==========================================================================
    Helper classes
    ========================================================================== */

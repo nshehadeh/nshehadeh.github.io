@@ -1,10 +1,109 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+<!doctype html>
+<html class="no-js" lang="">
 
+<head>
+  <meta charset="utf-8">
+  <title>Nishan Shehadeh Personal Website</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Links to fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+<header>
+  <!--
+  <div class = "logo">
+    <img src = "img/devjane.png" alt = "">
+  </div> -->
+  <button class = "nav-toggle" aria-label = "toggle navigation">
+    <span class = "hamburger"></span>
+  </button>
+  <nav class = "nav">
+    <ul class = "nav_list">
+      <li class = "nav_item"><a href = "index.html" class = "nav_link"> Home </a> </li>
+      <li class = "nav_item"><a href = "index.html#about" class = "nav_link"> About Me</a> </li>
+      <li class = "nav_item"><a href = "index.html#projects" class = "nav_link"> Projects</a> </li>
+      <li class = "nav_item"><a href = "index.html#contact" class = "nav_link"> Contact</a> </li>
+
+      <!-- <li class = "nav_item"><a href = "#work" class = "nav_link"> Work Experience</a> </li>
+       <li class = "nav_item"><a href = "#interests" class = "nav_link"> Interests</a> </li> -->
+    </ul>
+  </nav>
+</header>
+
+<!-- VISE Summer Project -->
+<section class = "project-page">
+  <h2 class = "section_title section_title-about">Ray Tracer</h2>
+  <p class = "section_subtitle section_subtitle-about">Vanderbilt BEAM Lab, Undergraduate</p>
+
+  <div class = "project-page_body">
+    <p>I wrote this program during a 10-week fellowship in the <strong> Vanderbilt Institute for Surgery and Engineering </strong>. I
+      worked in Dr. Byram’s BEAM Lab under PhD candidate Emelina Vienneau. Emelina’s research revolves around making
+      transcranial ultrasound possible for the first time. My project addressed one of the issues with transcranial
+      ultrasound: finding a suitable acoustic window. I did this by calculating the lag-one coherence of the ultrasound
+      data in real time using <strong> CUDA </strong>. I then interfaced this program with the ultrasound scanner (Verasonics) to act as
+      real-time assistance using <strong>MEX</strong>. Here is a video demonstration of the final product and more details on the project:</p>
+    <video class = "demo_vid" controls>
+      <source src = "vids/finalDemo.mp4" type = "video/mp4">
+    </video>
+    <p>I had to do extensive literature review on ultrasound basics and data, calculating coherence, and acoustic windows.
+      I then implemented a few offline MatLab functions including a delay-and-sum beamforming program that produces B-Mode
+      images (left image), a MatLab coherence function from which I based my C implementation (middle), and an intuitive
+      GUI that displays the current coherence, previous max, and has a reset max button (right). Finally, I wrote the
+      CUDA version that could process the data in real time using <strong> GPU parallel processing </strong>. Check out my Github for the code!  </p>
+    <p>Important file to look at:
+      DAS_GPU_phased_array_probe_Verasonics_RF_buffer_data_type</p>
+    <p>Thank you to Emelina, Chris, and Dr. Byram!</p>
+    <img src = "img/visephoto.png" alt = "Some more of the work" class = "about-me_img">
+
+  </div>
+
+</section>
+
+<!-- Footer -->
+<footer class = "footer">
+  <a href = "mailto:nishan.g.shehadeh@vanderbilt.edu" class = "footer-email"> nishan.g.shehadeh@vanderbilt.edu</a>
+  <ul class = "social-list">
+    <li class  = "social-list_item">
+      <a class = "social-list_link" href = "https://www.linkedin.com/in/nishan-shehadeh">LinkedIn</a>
+    </li>
+    <li class  = "social-list_item">
+      <a class = "social-list_link" href = "https://www.vanderbilt.edu/vise/vise-affiliated-labs/#beam">Undergraduate Lab</a>
+    </li>
+    <li class  = "social-list_item">
+      <a class = "social-list_link" href = "https://github.com/nshehadeh">GitHub</a>
+    </li>
+
+  </ul>
+</footer>
+<!-- Add your site or application content here -->
+<script src="js/vendor/modernizr-3.11.2.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+
+<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+<script>
+  window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+  ga('create', 'G-5H9RTKTMCD', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async></script>
 </body>
+
 </html>

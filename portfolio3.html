@@ -1,0 +1,110 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Nishan Shehadeh Personal Website</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Links to fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+<header>
+  <!--
+  <div class = "logo">
+    <img src = "img/devjane.png" alt = "">
+  </div> -->
+  <button class = "nav-toggle" aria-label = "toggle navigation">
+    <span class = "hamburger"></span>
+  </button>
+  <nav class = "nav">
+    <ul class = "nav_list">
+      <li class = "nav_item"><a href = "index.html" class = "nav_link"> Home </a> </li>
+      <li class = "nav_item"><a href = "index.html#about" class = "nav_link"> About Me</a> </li>
+      <li class = "nav_item"><a href = "index.html#projects" class = "nav_link"> Projects</a> </li>
+      <li class = "nav_item"><a href = "index.html#contact" class = "nav_link"> Contact</a> </li>
+
+      <!-- <li class = "nav_item"><a href = "#work" class = "nav_link"> Work Experience</a> </li>
+       <li class = "nav_item"><a href = "#interests" class = "nav_link"> Interests</a> </li> -->
+    </ul>
+  </nav>
+</header>
+
+<!-- VISE Summer Project -->
+<section class = "project-page">
+  <h2 class = "section_title section_title-about">Caritas Login/ Food Ordering App</h2>
+  <p class = "section_subtitle section_subtitle-about">Worked with local food bank Cartias of Port Chester</p>
+
+  <div class = "project-page_body">
+    <p>This program is the culmination of a semester long, individual project as part of a graphics class. The first
+      modules in the program were writing a CLI to take in instructions and build a framework for the rest of the semester.
+      Additionally, it has commands that can read and write Tiff files. Writing the Tiff file reader/writer involved a
+      deep dive into Tiff documentation and byte by byte parsing of files. You can also resize images which uses a
+      Lanczos kernel as the base convolution kernel. Finally, I implemented a ray tracer which can:</p>
+    <ul>
+      <li>Create spheres, triangles, planes, and boxes</li>
+      <li>Set screen dimensions, resize images</li>
+      <li>Set orthographic cameras and custom cameras</li>
+      <li>Set custom light sources and illuminate the scene</li>
+    </ul>
+    <img src = "img/portfolio2.png" alt = "Some more of the work" class = "about-me_img">
+    <p>The ray tracer works by sending out rays from an origin that are then projected into the “image”. When the rays
+      “hit” one of the objects in the image, the color, shading, and reflection are calculated (reflection is calculated
+      through a reflection ray that goes through a similar process) and the color on the image is adjusted. This project
+      took a large amount of physics-based programming and demanded I use multiple patterns and OOP strategies to keep
+      my code organized and efficient. The photos on this page were both rendered using only my program. Code is available
+      upon request! </p>
+    <img src = "img/raytracerex2.png" alt = "Some more of the work" class = "about-me_img">
+
+  </div>
+
+</section>
+
+<!-- Footer -->
+<footer class = "footer">
+  <a href = "mailto:nishan.g.shehadeh@vanderbilt.edu" class = "footer-email"> nishan.g.shehadeh@vanderbilt.edu</a>
+  <ul class = "social-list">
+    <li class  = "social-list_item">
+      <a class = "social-list_link" href = "https://www.linkedin.com/in/nishan-shehadeh">LinkedIn</a>
+    </li>
+    <li class  = "social-list_item">
+      <a class = "social-list_link" href = "https://www.vanderbilt.edu/vise/vise-affiliated-labs/#beam">Undergraduate Lab</a>
+    </li>
+    <li class  = "social-list_item">
+      <a class = "social-list_link" href = "https://github.com/nshehadeh">GitHub</a>
+    </li>
+
+  </ul>
+</footer>
+<!-- Add your site or application content here -->
+<script src="js/vendor/modernizr-3.11.2.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+
+<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+<script>
+  window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+  ga('create', 'G-5H9RTKTMCD', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async></script>
+</body>
+
+</html>
