@@ -557,13 +557,13 @@ text-decoration: none;}
 .btn-slide{
   position: relative;
   display: inline-block;
-  height: 80px;
+  height: 75px;
   width: 400px;
   line-height: 50px;
   padding: 0;
   border-radius: 50px;
   background: #fdfdfd;
-  border: 10px solid  var(--clr-light);;
+  border: 7px solid  var(--clr-light);;
   margin: 10px;
   transition: .5s;
 }
