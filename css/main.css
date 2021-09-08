@@ -245,6 +245,9 @@ h3{font-size: var(--fs-h3)}
   margin: 0;
   padding: 0;
 }
+.right_item{
+  margin-right: 40px;
+}
 .nav_link{
   color: inherit;
   font-weight: var(--fw-bold);
