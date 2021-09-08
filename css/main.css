@@ -557,13 +557,13 @@ text-decoration: none;}
 .btn-slide{
   position: relative;
   display: inline-block;
-  height: 65px;
+  height: 80px;
   width: 400px;
   line-height: 50px;
   padding: 0;
   border-radius: 50px;
   background: #fdfdfd;
-  border: 2px solid  var(--clr-light);;
+  border: 10px solid  var(--clr-light);;
   margin: 10px;
   transition: .5s;
 }
@@ -607,10 +607,9 @@ text-decoration: none;}
 }
 
 .btn-slide span.title,
-.btn-slide span.title-hover, .btn-slide2 span.title2,
-.btn-slide2 span.title-hover2 {
+.btn-slide span.title-hover {
   position: absolute;
-  left: 90px;
+  left: 105px;
   text-align: center;
   margin: 0 auto;
   font-size: var(--fs-h3);
