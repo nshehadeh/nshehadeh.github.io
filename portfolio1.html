@@ -54,15 +54,17 @@
   <p class = "section_subtitle section_subtitle-about">Vanderbilt BEAM Lab, Undergraduate</p>
 
   <div class = "project-page_body">
-    <p>I wrote this program during a 10-week fellowship in the <strong> Vanderbilt Institute for Surgery and Engineering </strong>. I
+    <p>I wrote this program during a 10-week fellowship in the <strong> Vanderbilt Institute for Surgery and Engineering</strong>. I
       worked in Dr. Byram’s BEAM Lab under PhD candidate Emelina Vienneau. Emelina’s research revolves around making
       transcranial ultrasound possible for the first time. My project addressed one of the issues with transcranial
-      ultrasound: finding a suitable acoustic window. I did this by calculating the lag-one coherence of the ultrasound
-      data in real time using <strong> CUDA </strong>. I then interfaced this program with the ultrasound scanner (Verasonics) to act as
+      ultrasound, finding a suitable acoustic window, by creating a real-time image guidance system to help the ultrasound scanner.
+      I did this by calculating the lag-one coherence of the ultrasound
+      data in real time using <strong> CUDA</strong>. I then interfaced this program with the ultrasound scanner (Verasonics) to act as
       real-time assistance using <strong>MEX</strong>. Here is a video demonstration of the final product and more details on the project:</p>
     <video class = "demo_vid" controls>
       <source src = "vids/finalDemo.mp4" type = "video/mp4">
     </video>
+    <img src = "img/visephoto.png" alt = "Some more of the work" class = "about-me_img">
     <p>I had to do extensive literature review on ultrasound basics and data, calculating coherence, and acoustic windows.
       I then implemented a few offline MatLab functions including a delay-and-sum beamforming program that produces B-Mode
       images (left image), a MatLab coherence function from which I based my C implementation (middle), and an intuitive
@@ -71,7 +73,6 @@
     <p>Important file to look at:
       DAS_GPU_phased_array_probe_Verasonics_RF_buffer_data_type</p>
     <p>Thank you to Emelina, Chris, and Dr. Byram!</p>
-    <img src = "img/visephoto.png" alt = "Some more of the work" class = "about-me_img">
 
   </div>
 
