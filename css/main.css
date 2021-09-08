@@ -546,6 +546,89 @@ text-decoration: none;}
     width: 75%;
   }
 }
+
+/* Button */
+
+#wrap {
+  margin: 2em auto;
+  text-align: center;
+}
+
+.btn-slide{
+  position: relative;
+  display: inline-block;
+  height: 65px;
+  width: 400px;
+  line-height: 50px;
+  padding: 0;
+  border-radius: 50px;
+  background: #fdfdfd;
+  border: 2px solid  var(--clr-light);;
+  margin: 10px;
+  transition: .5s;
+}
+
+.btn-slide:hover {
+  background-color: var(--clr-light);
+}
+
+
+.btn-slide:hover span.circle{
+  left: 100%;
+  margin-left: -45px;
+  background-color: white;
+  color: var(--clr-light);
+}
+
+.btn-slide:hover span.title{
+  left: 40px;
+  opacity: 0;
+}
+
+.btn-slide:hover span.title-hover{
+  opacity: 1;
+  left: 40px;
+}
+
+.btn-slide span.circle{
+  display: block;
+  background-color: var(--clr-light);
+  color: white;
+  position: absolute;
+  float: left;
+  margin: 5px;
+  line-height: 42px;
+  height: 50px;
+  width: 40px;
+  top: 0;
+  left: 0;
+  transition: .5s;
+  border-radius: 50%;
+}
+
+.btn-slide span.title,
+.btn-slide span.title-hover, .btn-slide2 span.title2,
+.btn-slide2 span.title-hover2 {
+  position: absolute;
+  left: 90px;
+  text-align: center;
+  margin: 0 auto;
+  font-size: var(--fs-h3);
+  font-weight: bold;
+  color: var(--clr-light);
+  transition: .5s;
+}
+
+.btn-slide span.title-hover, .btn-slide2 span.title-hover2 {
+  left: 80px;
+  opacity: 0;
+}
+
+.btn-slide span.title-hover, .btn-slide2 span.title-hover2 {
+  color: white;
+}
+
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
