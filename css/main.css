@@ -457,6 +457,38 @@ h3{font-size: var(--fs-h3)}
   opacity(0.20); /* Higher is more color coming through
   */
 
+/* Class List Section */
+.all_classes{
+  margin: 0 auto;
+  text-align:center;
+  background:white;
+  color: var(--clr-light);
+  padding: 0.5em;
+}
+.class_title{
+  padding: 0.5em;
+}
+.class_list{
+  list-style:none;
+  padding: 0;
+}
+@media (min-width: 600px) {
+  .all_classes{
+    display: grid;
+    grid-template-areas: "previous fall spring";
+    grid-column-gap: 1em;
+  }
+  .previous_classes{
+    grid-area: previous;
+  }
+  .fall_classes{
+    grid-area:fall;
+  }
+  .spring_classes{
+    grid-area: spring;
+  }
+
+}
 
 /* Footer Section */
 .footer{
