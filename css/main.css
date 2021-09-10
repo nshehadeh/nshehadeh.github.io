@@ -384,10 +384,13 @@ h3{font-size: var(--fs-h3)}
     justify-content:center;
     text-align:center;
     margin-top: 3em;
-    margin-bottom: 3em;
+    margin-bottom: 0.5em;
   }
 }
-
+figcaption{
+  text-align:center;
+  font-size: 0.8em;
+}
 /* Portfolio Section */
 .projects{
   background-color: var(--clr-dark);
