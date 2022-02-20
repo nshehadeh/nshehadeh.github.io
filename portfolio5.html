@@ -68,9 +68,24 @@
       for projects within the BEAM Lab and for the field in general if successful. <strong> As part of this project, I will
       simulate or acquire training, testing, and validation data, design a neural network architecture, design a loss
         function, choose an optimizer, and perform a hyperparameter search </strong>. I will be using <strong>PyTorch </strong> for this project.</p>
-    <p> As the first step in this project, I am enrolled in <strong>Coursera's Deep Learning Specialization series.</strong> I'm excited
-    for this project to be my introduction into the world of deep learning, and hoping it ties well into my future classes
-    in AI and deep learning related topics. I will be updating this page throughout the course of the project</p>
+    <p> As the first step in this project, I completed the first two classes in <strong>Coursera's Deep Learning Specialization series.</strong> After
+      completing the first two courses in the Coursera Specialization, I began going over the different aspects of my project.
+      Given I am using simulated anechoic cyst data, I had to become familiar with the complicated routine of simulating new
+      data on ACCRE. I also set up my Python environment to run the network on ACCRE, Vanderbilt's cluster system.
+      Finally, I started building my architecture and getting a first iteration training. My neural network was feed
+      forward and used a ReLU activation function, MSE loss function, and Adam optimizer for SGD. I properly separated
+      the network into main, trainer, model, data loader, logger, and test model files. I specifically designed my code
+      to be easily tuned in the future. Each hyper parameter is read in through a config file, making it extremely easy
+      to try different layer widths, number of hidden layers, datasets, and more. When I continue this project to perform
+      more in-depth hyper parameter tuning and test out different loss functions and models, it will be easy to alter my
+      structure to fit future problems. For example, I sampled the 2D phantom data by the first dimension, the beams, but
+      in the future the lab has found success using each phantom as an entire sample and using a convolutional neural network.
+      Because my data loader is set up to be easily customizable, it would only take two lines of code to make these changes.
+      I ran five different models toward the end of the semester and acquired some initial results. They were a proof of
+      concept for my network, and I recorded loss curves and image quality metrics for modeled images to compare to the
+      testing data input. The results show it is possible to increase SNR with a DNN, but it will take more tuning and
+      experimentation to have a more consistent model to use on old clinical data.
+    </p>
 
   </div>
 
