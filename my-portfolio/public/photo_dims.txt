@@ -1,0 +1,5 @@
+Recommended dimensions:
+
+Profile: 300x300px
+Project screenshots: 1280x720px
+Thumbnails: 400x225px (16:9)
