@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Github, Mail, Linkedin, ExternalLink } from "lucide-react";
 
 // Project detail component
+// Update the ProjectDetail component to handle the new content structure
 const ProjectDetail = ({ project, onBack }) => (
   <div className="max-w-4xl mx-auto p-6">
     <button 
@@ -35,20 +36,50 @@ const ProjectDetail = ({ project, onBack }) => (
         </a>
       )}
     </div>
-    <div className="grid gap-6">
-      <div className="prose max-w-none">
-        {project.description}
-      </div>
-      <div className="grid grid-cols-2 gap-4">
-        {project.images?.map((img, idx) => (
-          <img 
-            key={idx}
-            src={img}
-            alt={`${project.title} screenshot ${idx + 1}`}
-            className="rounded-lg shadow-md"
-          />
-        ))}
-      </div>
+    <div className="grid gap-8">
+      {project.content?.map((item, idx) => {
+        if (item.type === "paragraph") {
+          return (
+            <p key={idx} className="text-gray-600 leading-relaxed">
+              {item.text}
+            </p>
+          );
+        } else if (item.type === "image") {
+          return (
+            <div key={idx} className="flex flex-col items-center space-y-2">
+              <img 
+                src={item.src}
+                alt={item.caption || `${project.title} image ${idx}`}
+                className="rounded-lg shadow-md max-w-[600px] w-full"
+              />
+              {item.caption && (
+                <p className="text-sm text-gray-500 italic">
+                  {item.caption}
+                </p>
+              )}
+            </div>
+          );
+        } else if (item.type === "image-row") {
+          return (
+            <div key={idx} className="grid grid-cols-2 gap-4">
+              {item.images.map((image, imageIdx) => (
+                <div key={imageIdx} className="flex flex-col items-center space-y-2">
+                  <img 
+                    src={image.src}
+                    alt={image.caption || `${project.title} image ${imageIdx + 1}`}
+                    className="rounded-lg shadow-md w-full"
+                  />
+                  {image.caption && (
+                    <p className="text-sm text-gray-500 italic">
+                      {image.caption}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+          );
+        }
+      })}
     </div>
   </div>
 );
@@ -80,37 +111,201 @@ function App() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedExperience, setSelectedExperience] = useState(null);
   const [selectedCategories, setSelectedCategories] = useState([]);
+  const [activeTab, setActiveTab] = useState("about");
 
   const categories = [
+    "Research",
     "Full Stack",
     "Mixed Reality",
     "Computer Vision",
     "Machine Learning",
     "LLMs",
-    "Medical"
+    "Medical",
   ];
 
   const projects = [
     {
       id: 1,
-      title: "Medical Image Analysis Platform",
-      preview: "AI-powered platform for medical image analysis",
+      title: "PolicyBot",
+      previewImage: "/projects/policy-bot/policybot.gif",
+      preview: "LLM and RAG powered chatbot that answers questions about the federal government's policies",
       ongoing: true,
-      github: "https://github.com/yourusername/project1",
-      description: "Detailed description of the medical image analysis platform...",
-      images: ["/api/placeholder/400/300", "/api/placeholder/400/300"],
-      categories: ["Medical", "Computer Vision", "Machine Learning"]
+      github: "https://github.com/nshehadeh/policy-bot",
+      content: [
+        {
+          type: "paragraph",
+          text: `
+            PolicyBot is a full-stack chatbot powered by large language models (LLMs) 
+            and retrieval-augmented generation (RAG), designed to make U.S. government 
+            policies more accessible to the public. PolicyBot draws from White House 
+            "Briefing Room" documents—speeches, interviews, press briefings, and more—using 
+            similarity-based searches to deliver answers that directly respond to user questions. 
+            Originally, I created PolicyBot to provide users with easy access to information 
+            about the Biden administration, inspired by how LLMs can rapidly organize vast 
+            datasets and present information in digestible formats, potentially transforming 
+            how we access public information.
+          `.trim()        
+        },
+        {
+          type: "image",
+          src: "/projects/policy-bot/policybot.gif", // Update with your actual image path
+          caption: "PolicyBot Chat Example"
+        },
+        {
+          type: "paragraph",
+          text: `
+            The project is built on a Django backend and a React frontend.
+            The Django backend defines a REST API that connects to a RAG system 
+            powered by LangChain, which retrieves and processes data to provide responses.
+            LangChain works with a Pinecone vector database to search document chunks for
+            relevance, enhancing responses with custom system prompts and chat history. 
+            User data, including chat histories, is stored in PostgreSQL through Django's 
+            ORM, while MongoDB stores full documents for the LLM to reference as needed. I 
+            compiled the initial dataset by scraping White House documents using Python scripts
+            with BeautifulSoup.
+            `.trim()
+        },
+        {
+          type: "paragraph",
+          text: `
+            Recently, I transitioned the response system from traditional API requests to a 
+            WebSocket-based streaming approach. This allows answers to be sent to the frontend 
+            in real time, simulating the experience of chatbots like ChatGPT, where responses 
+            are displayed incrementally as they're generated. Currently, I am working on 
+            enhancing the retrieval system by integrating RAG-Fusion into the LangChain 
+            retriever and developing a continuous integration pipeline to automatically 
+            update the dataset with new documents as they're published, ensuring PolicyBot 
+            stays current on emerging topics and policy changes.
+            `.trim()
+        }
+      ],
+      categories: ["Full Stack", "LLMs"]
     },
     {
       id: 2,
-      title: "Virtual Reality Training System",
-      preview: "VR-based medical training simulator",
+      title: "XROG: Extended Reality Object Generation",
+      preview: "Interactive AR environment that allows users to generate virtual objects with 3D sketches",
+      previewImage: "/projects/xrog/gif_clip.gif",
       ongoing: false,
-      github: "https://github.com/yourusername/project2",
-      description: "Detailed description of the VR training system...",
-      images: ["/api/placeholder/400/300", "/api/placeholder/400/300"],
-      categories: ["Mixed Reality", "Medical"]
-    }
+      content: [
+        {
+          type: "paragraph",
+          text: `
+            In this project, I developed XROG, an interactive object generation system 
+            for augmented reality (AR) on Microsoft’s Hololens 2. The system leverages 
+            real-time hand tracking and custom gesture recognition to classify 3D sketches 
+            drawn by users, which are then used to generate virtual 3D objects within an AR 
+            environment. The project involved the complete pipeline of data collection, model 
+            training, and real-time deployment. Using Unity and Microsoft’s Mixed Reality Toolkit, 
+            I created a dataset by recording hand gestures that sketch various shapes, saved as 
+            sparse 3D point clouds. To make the data model-ready, I resampled, normalized, and 
+            applied augmentations like translations, rotations, and noise, which increased the 
+            dataset size and robustness.
+            `.trim()
+        },
+        {
+          type: "image",
+          src: "/projects/xrog/gif_clip.gif",
+          caption: "XROG in Action"
+        },
+        {
+          type: "paragraph",
+          text: `
+            After data processing, I trained a machine learning model using an SVM to classify 
+            these 3D sketches into object categories like swords, shields, and stars. The model 
+            was then deployed via a RESTful API using Flask and Heroku to handle real-time inference 
+            requests from the Unity application. This setup enabled users to draw gestures in real-time, 
+            have their input classified, and instantly see the corresponding 3D object generated in 
+            the AR scene. The Unity application integrates seamlessly with the cloud service, creating 
+            an intuitive and interactive AR experience that showcases real-time object generation. 
+            The full report and code for this project are available on my GitHub.
+            `.trim()
+        }
+      ],
+      categories: ["Mixed Reality", "Machine Learning", "Full Stack"]
+    },
+    {
+        id: 3,
+        title: "Surgical Gesture and Skill Recognition",
+        preview: "Contrastive learning for surgical skill assessment using surgical videos and robot kinematics",
+        previewImage: "/projects/contrastive/model.png",
+        ongoing: false,
+        github: "https://github.com/nshehadeh/contrastive-gesture-skill",
+        content: [
+          {
+            type: "paragraph",
+            text: `
+              This work implements a contrastive learning framework for gesture and skill recognition, focusing 
+              on modeling latent space representations from endoscope images captured during robot-assisted surgery. 
+              Building on Wu et al.'s encoder-decoder structure, I introduced contrastive learning techniques to improve 
+              the separability of the embedding space, allowing for more effective classification of surgical gestures and 
+              skills. I explored different contrastive learning models, starting with data augmentation-based contrastive 
+              learning using optical flow data, followed by a multi-modal model incorporating kinematic data for sample 
+              pairing, and finally a time-invariant model using Fourier transforms. Each model was designed to push similar 
+              gestures closer in the embedding space while increasing the separation of distinct gestures.
+            `.trim(),
+          },
+          {
+            type: "image",
+            src: "/projects/contrastive/model.png",
+            caption: "Model Architecture for Contrastive Model Using Kinematics for Positive and Negative Samples"
+
+          },
+          {
+            type: "paragraph",
+            text: `
+            Throughout the project, I created positive and negative sample pairs, applied contrastive loss functions, and 
+            incorporated triplet loss to enhance the discriminative power of the embeddings. Once trained, the models were 
+            evaluated for classification accuracy and visualized through UMAP projections, highlighting gesture, skill, 
+            and user clusters. While contrastive learning did not produce the expected accuracy improvements—likely due 
+            to the small dataset size—the embeddings reveal insights into skill variations across users. Future iterations 
+            could refine the model structure and use larger datasets for better generalization. The full report and code 
+            are available on my GitHub.
+            `.trim()
+          },
+          {
+            type: "image-row",
+            images: [
+              {
+                src: "/projects/contrastive/gesture.png",
+                caption: "Surgical Gesture UMAP for Kinematic Contrastive Model"
+              },
+              {
+                src: "/projects/contrastive/skill.png",
+                caption: "Surgical Skill UMAP for Kinematic Contrastive Model"
+              }
+            ]
+          },
+        ],
+        categories: ["Machine Learning", "Computer Vision", "Medical"]
+      },
+      {
+        id: 6,
+        title: "Deathris",
+        preview: "Multiplayer VR Tetris with unique player perspectives",
+        ongoing: false,
+        github: "https://github.com/nshehadeh/Deathris",
+        description: "Two-player VR Tetris game built in Unity using Normcore multiplayer networking. One player experiences being trapped inside a classic Tetris game, dodging falling blocks in VR.",
+        categories: ["Mixed Reality"]
+      },
+      {
+        id: 7,
+        title: "AR Presence Investigation",
+        preview: "HoloLens2 research platform for AR presence perception",
+        ongoing: false,
+        github: null,
+        description: "Masters thesis research platform built for HoloLens2 studying presence in AR. Features customizable interaction levels, physics simulations, and shadow rendering to evaluate user perception of virtual object plausibility through transition probability distributions.",
+        categories: ["Research", "Mixed Reality"]
+      },
+      {
+        id: 8,
+        title: "SUDS: Image Steganography Sanitizer",
+        preview: "VAE-based framework for removing hidden data from images",
+        ongoing: false,
+        github: null, // Add if available
+        description: "Published research developing a VAE-based sanitizer framework for removing hidden steganographic information while preserving image quality. Successfully mitigated data poisoning attacks, reducing attack success rate from 88.31% to 0.72%.",
+        categories: ["Research", "Machine Learning", "Computer Vision"]
+      }
   ];
 
   const experiences = [
@@ -119,14 +314,15 @@ function App() {
       title: "Machine Learning Engineer Intern",
       company: "Accenture Federal Services (AFS)",
       period: "May 2022 - August 2022",
-      preview: "Leading development of AI-powered healthcare solutions",
+      preview: "Member of AFS's Machine Learning Research Division",
       description: "Detailed description of the role and responsibilities...",
       achievements: [
         "Conducted research on the application and adaptation of emerging AI technologies for federal services",
         "Implemented CLIP-GEN to synthesize images to improve hotel classification in human trafficking photographs",
         "Preprocessed and cleaned the Hotels50k dataset on an AWS EC2 instance",
         "Fine-tuned CLIP to learn latent state representations of hotel picture and location pairs using HuggingFace and multi-GPU training, resulting in 98% accuracy classifying hotel chains and the generation of basic synthetic images"
-      ]
+      ],
+      companyLogo: "/experiences/afs-logo.jpg"
     },
     {
       id: 2,
@@ -139,6 +335,17 @@ function App() {
         "Implemented an algorithm and GUI to facilitate live ultrasound placement on patients",
         "Engineered an acoustic window detection algorithm using MATLAB, MEX, and CUDA (C) for efficient real-time ultrasound analysis on beamformed data",
         "Improved ultrasound image quality with UNET, achieving 15% average SNR gains on phantom RF data"
+      ],
+      companyLogo: "/experiences/vise-logo.png",
+      projectLinks: [  // Optional array of related projects
+        {
+          id: 1,  // matches the id in your projects array
+          label: "Medical Image Analysis Platform"  // display name
+        },
+        {
+          id: 2,
+          label: "Virtual Reality Training System"
+        }
       ]
     }
   ];
@@ -155,7 +362,10 @@ function App() {
     return (
       <ProjectDetail 
         project={projects.find(p => p.id === selectedProject)} 
-        onBack={() => setSelectedProject(null)}
+        onBack={() => {
+          setSelectedProject(null);
+          setActiveTab("projects"); // Set active tab back to projects
+        }}
       />
     );
   }
@@ -191,7 +401,7 @@ function App() {
             </div>
           </div>
           <img 
-            src="/public/profile/hs.png" 
+            src="/profile/hs.png" 
             alt="Profile" 
             className="rounded-full w-32 h-32 border-4 border-white shadow-lg object-cover flex-shrink-0"  // Added object-cover and flex-shrink-0
             />
@@ -199,7 +409,7 @@ function App() {
 
         {/* Main Content */}
         <main className="max-w-4xl mx-auto">
-          <Tabs defaultValue="about" className="w-full">
+          <Tabs defaultValue={activeTab} className="w-full">
             <TabsList className="grid w-full grid-cols-5">
               <TabsTrigger value="about">About</TabsTrigger>
               <TabsTrigger value="experience">Experience</TabsTrigger>
@@ -218,7 +428,12 @@ function App() {
                     includes implementing state-of-the-art solutions in both fields, from designing 
                     and deploying various deep learning networks to developing immersive AR environments. 
                     I also have experience in industry with applying generative AI to real-world problems. 
-                    In 2024, I am actively seeking work in tech.
+                    In 2024, I am actively seeking work in tech. I am most interested in medical technology,
+                    machine learning, mixed reality, and building scalable backend systems.  
+
+                    After finishing my accelerated Master's program at Vanderbilt, I spent over a year 
+                    solo backpacking Africa and Asia. Since returning, I have been working on multiple projects, 
+                    interviewing, and staying up-to-date in trends in machine learning, startups, and generative AI. 
                   </p>
                 </CardContent>
               </Card>
@@ -234,40 +449,169 @@ function App() {
                             key={experience.id}
                             className="text-left border p-4 rounded-lg hover:shadow-md transition-all duration-300"
                         >
-                            <h3 className="font-semibold">{experience.title}</h3>
-                            <p className="text-sm text-gray-500">{experience.company} • {experience.period}</p>
-                            <p className="mt-2 text-gray-600">{experience.preview}</p>
-                            {experience.achievements && (
-                            <ul className="mt-2 list-disc list-inside text-gray-600">
-                                {experience.achievements.map((achievement, idx) => (
-                                <li key={idx}>{achievement}</li>
-                                ))}
-                            </ul>
-                            )}
-                            {experience.projectLinks && experience.projectLinks.length > 0 && (
-                            <div className="mt-3">
-                                <p className="text-sm font-medium mb-1">Related Projects:</p>
-                                <div className="flex gap-2">
-                                {experience.projectLinks.map((link) => (
-                                    <button
-                                    key={link.id}
-                                    onClick={() => setSelectedProject(link.id)}
-                                    className="text-blue-600 hover:text-blue-800 text-sm underline"
-                                    >
-                                    {link.label}
-                                    </button>
-                                ))}
+                            <div className="flex justify-between items-start">
+                            <div className="flex-grow">
+                                <h3 className="font-semibold">{experience.title}</h3>
+                                <p className="text-sm text-gray-500">{experience.company} • {experience.period}</p>
+                                <p className="mt-2 text-gray-600">{experience.preview}</p>
+                                {experience.achievements && (
+                                <ul className="mt-2 list-disc list-inside text-gray-600">
+                                    {experience.achievements.map((achievement, idx) => (
+                                    <li key={idx}>{achievement}</li>
+                                    ))}
+                                </ul>
+                                )}
+                                {experience.projectLinks && experience.projectLinks.length > 0 && (
+                                <div className="mt-4">
+                                    <div className="flex flex-wrap gap-2">
+                                    {experience.projectLinks.map((link) => (
+                                        <button
+                                        key={link.id}
+                                        onClick={() => setSelectedProject(link.id)}
+                                        className="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 hover:bg-blue-100 text-blue-600 text-sm transition-colors"
+                                        >
+                                        <span className="mr-1">→</span> {link.label}
+                                        {link.tags && link.tags.map(tag => (
+                                            <span key={tag} className="ml-1 text-xs bg-blue-100 px-2 py-0.5 rounded-full">
+                                            {tag}
+                                            </span>
+                                        ))}
+                                        </button>
+                                    ))}
+                                    </div>
                                 </div>
+                                )}
                             </div>
+                            {experience.companyLogo && (
+                                <img 
+                                src={experience.companyLogo} 
+                                alt={`${experience.company} logo`}
+                                className="w-16 h-16 object-contain ml-4"
+                                />
                             )}
+                            </div>
                         </div>
                         ))}
                     </div>
                     </CardContent>
                 </Card>
                 </TabsContent>
+                <TabsContent value="projects">
+                    <Card>
+                        <CardContent className="pt-6">
+                        <div className="flex justify-between items-center mb-6">
+                            <h2 className="text-2xl font-semibold">Projects</h2>
+                            <div className="flex items-center gap-2 text-sm text-emerald-600">
+                            <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+                            Active
+                            </div>
+                        </div>
 
-            <TabsContent value="projects">
+                        {/* Categories filter - keeping this */}
+                        <div className="mb-6">
+                            <div className="text-sm text-gray-600 mb-2">Filter by category:</div>
+                            <div className="flex flex-wrap gap-2">
+                            {categories.map(category => (
+                                <button
+                                key={category}
+                                onClick={() => {
+                                    setSelectedCategories(prev =>
+                                    prev.includes(category)
+                                        ? prev.filter(c => c !== category)
+                                        : [...prev, category]
+                                    );
+                                }}
+                                className={`px-3 py-1 rounded-full text-sm transition-colors ${
+                                    selectedCategories.includes(category)
+                                    ? 'bg-blue-600 text-white'
+                                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                                }`}
+                                >
+                                {category}
+                                </button>
+                            ))}
+                            </div>
+                        </div>
+
+                        {/* New Project Grid */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {filteredProjects.map((project) => (
+                            <button
+                                key={project.id}
+                                onClick={() => setSelectedProject(project.id)}
+                                className="group relative bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden border border-gray-200 text-left"
+                            >
+                                {/* Project Preview Image or Placeholder */}
+                                <div className="aspect-video w-full bg-gradient-to-br from-gray-100 to-gray-200 relative overflow-hidden">
+                                {project.previewImage ? (
+                                    <img 
+                                    src={project.previewImage} 
+                                    alt={project.title}
+                                    className="w-full h-full object-cover"
+                                    />
+                                ) : (
+                                    <div className="absolute inset-0 flex items-center justify-center">
+                                    {/* Visual placeholder based on category */}
+                                    {project.categories[0] === "Machine Learning" && (
+                                        <div className="text-3xl opacity-30">🤖</div>
+                                    )}
+                                    {project.categories[0] === "Mixed Reality" && (
+                                        <div className="text-3xl opacity-30">🥽</div>
+                                    )}
+                                    {project.categories[0] === "LLMs" && (
+                                        <div className="text-3xl opacity-30">💬</div>
+                                    )}
+                                    {/* Add more category icons as needed */}
+                                    </div>
+                                )}
+                                {/* Ongoing badge if applicable */}
+                                {project.ongoing && (
+                                    <div className="absolute top-2 right-2 bg-emerald-500 text-white text-xs px-2 py-1 rounded-full">
+                                    Active
+                                    </div>
+                                )}
+                                </div>
+
+                                {/* Project Info */}
+                                <div className="p-4">
+                                <div className="flex justify-between items-start mb-2">
+                                    <h3 className="font-semibold text-lg group-hover:text-blue-600 transition-colors">
+                                    {project.title}
+                                    </h3>
+                                    {project.github && (
+                                    <a 
+                                        href={project.github}
+                                        className="text-gray-400 hover:text-gray-600"
+                                        onClick={e => e.stopPropagation()}
+                                    >
+                                        <Github className="h-5 w-5" />
+                                    </a>
+                                    )}
+                                </div>
+                                <p className="text-gray-600 text-sm mb-3 line-clamp-2">
+                                    {project.preview}
+                                </p>
+                                <div className="flex flex-wrap gap-1">
+                                    {project.categories.map(category => (
+                                    <span 
+                                        key={category} 
+                                        className="px-2 py-0.5 bg-gray-100 text-gray-600 rounded-full text-xs"
+                                    >
+                                        {category}
+                                    </span>
+                                    ))}
+                                </div>
+                                </div>
+
+                                {/* Interactive overlay hint */}
+                                <div className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-10 transition-opacity" />
+                            </button>
+                            ))}
+                        </div>
+                        </CardContent>
+                    </Card>
+                    </TabsContent>
+            {/*<TabsContent value="projects">
               <Card>
                 <CardContent className="pt-6">
                   <div className="flex justify-between items-center mb-6">
@@ -341,7 +685,44 @@ function App() {
                 </CardContent>
               </Card>
             </TabsContent>
-
+            */}
+            <TabsContent value="resume">
+                <Card>
+                    <CardContent className="pt-6">
+                    <div className="flex justify-between items-center mb-6">
+                        <h2 className="text-2xl font-semibold">Resume</h2>
+                        <a 
+                        href="/resume/nishan-shehadeh-resume.pdf"
+                        download
+                        className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                        >
+                        <svg 
+                            className="w-4 h-4 mr-2" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                        >
+                            <path 
+                            strokeLinecap="round" 
+                            strokeLinejoin="round" 
+                            strokeWidth={2} 
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" 
+                            />
+                        </svg>
+                        Download PDF
+                        </a>
+                    </div>
+                    <div className="border rounded-lg overflow-hidden bg-gray-50">
+                        <iframe
+                        src="/resume/nishan-shehadeh-resume.pdf"
+                        className="w-full h-[800px]"
+                        title="Resume Preview"
+                        />
+                    </div>
+                    </CardContent>
+                </Card>
+                </TabsContent>
+            {/*
             <TabsContent value="resume">
               <Card>
                 <CardContent className="pt-6">
@@ -371,7 +752,7 @@ function App() {
                 </CardContent>
               </Card>
             </TabsContent>
-
+            */}
             <TabsContent value="blog">
               <Card>
                 <CardContent className="pt-6">
