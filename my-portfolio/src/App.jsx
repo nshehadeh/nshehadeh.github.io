@@ -45,15 +45,22 @@ const ProjectDetail = ({ project, onBack }) => (
             </p>
           );
         } else if (item.type === "image") {
+          const sizeClasses = {
+            small: "max-w-[200px]",
+            medium: "max-w-[500px]",
+            large: "max-w-[600px]",
+            // Add more sizes as needed
+          };
+        
           return (
             <div key={idx} className="flex flex-col items-center space-y-2">
               <img 
                 src={item.src}
                 alt={item.caption || `${project.title} image ${idx}`}
-                className="rounded-lg shadow-md max-w-[600px] w-full"
+                className={`rounded-lg shadow-md w-full ${sizeClasses[item.size] || sizeClasses.large}`}
               />
               {item.caption && (
-                <p className="text-sm text-gray-500 italic">
+                <p className="text-sm text-gray-500 italic max-w-[600px]">
                   {item.caption}
                 </p>
               )}
@@ -125,7 +132,7 @@ function App() {
   const aboutContent = [
     {
       type: "paragraph",
-      text: "As a recent graduate with a Master's and Bachelor's in computer science, I have specialized in machine learning and mixed reality. My experience includes implementing state-of-the-art solutions in both fields, from designing and deploying various deep learning networks to developing immersive AR environments. I also have experience in industry with applying generative AI to real-world problems. In 2024, I am actively seeking work in tech. I am most interested in medical technology, machine learning, mixed reality, and building scalable backend systems."
+      text: "I am a recent graduate with a Master's and Bachelor's in Computer Science, specializing in machine learning and mixed reality. My experience includes implementing state-of-the-art solutions in both fields, from designing and deploying various deep learning networks to developing immersive AR environments. I also have experience in industry with applying generative AI to real-world problems. In 2024, I am actively seeking work in tech. I am most interested in medical technology, machine learning, mixed reality, and building scalable backend systems."
     },
     {
       type: "image-row",
@@ -216,13 +223,14 @@ function App() {
       title: "XROG: Extended Reality Object Generation",
       preview: "Interactive AR environment that allows users to generate virtual objects with 3D sketches",
       previewImage: "/projects/xrog/gif_clip.gif",
+      github: "https://github.com/nshehadeh/xrog",
       ongoing: false,
       content: [
         {
           type: "paragraph",
           text: `
             In this project, I developed XROG, an interactive object generation system 
-            for augmented reality (AR) on Microsoft’s Hololens 2. The system leverages 
+            for augmented reality (AR) on Microsoft’s HoloLens2. The system leverages 
             real-time hand tracking and custom gesture recognition to classify 3D sketches 
             drawn by users, which are then used to generate virtual 3D objects within an AR 
             environment. The project involved the complete pipeline of data collection, model 
@@ -258,7 +266,7 @@ function App() {
         id: 3,
         title: "Surgical Gesture and Skill Recognition",
         preview: "Contrastive learning for surgical skill assessment using surgical videos and robot kinematics",
-        previewImage: "/projects/contrastive/model.png",
+        previewImage: "/projects/contrastive/images.jpg",
         ongoing: false,
         github: "https://github.com/nshehadeh/contrastive-gesture-skill",
         content: [
@@ -322,11 +330,56 @@ function App() {
       */
       {
         id: 7,
-        title: "AR Presence Investigation",
-        preview: "HoloLens2 research platform for AR presence perception",
+        title: "Investigation of Presence in AR",
+        preview: "HoloLens2 research platform for a user study on plausibility in AR",
+        previewImage: "/projects/thesis/full_scene.png",
         ongoing: false,
-        github: null,
-        description: "Masters thesis research platform built for HoloLens2 studying presence in AR. Features customizable interaction levels, physics simulations, and shadow rendering to evaluate user perception of virtual object plausibility through transition probability distributions.",
+        github: "https://github.com/nshehadeh/ar_presence",
+        content:[
+          {
+            type: "paragraph",
+            text: `My Master's thesis, An Investigation of Presence in Augmented Reality (AR), investigated the factors that contribute
+            to a sense of presence and plausibility for virtual objects in the real world displayed in optical-see-through (OST) displays.
+            This was the first study to use psychophyhsical methods to come up with a systemic way to quantitatively measure how people percieve
+            virtual objects, and inform current models of presence in AR with the results. 
+            
+            I conducted a user study in a controlled AR environment 
+            on the HoloLens2 headset, where participants interacted with virtual objects under different configurations. The study 
+            systematically varied three core factors: interaction, physics, and shadows.
+            `.trim()
+          },
+          {
+            type: "image",
+            src: "/projects/thesis/full_scene.png",
+            caption: "Virtual Environment"
+          },
+          {
+            type: "paragraph",
+            text: `Using a Markov chain 
+            to analyze transition choices and a budgeting task to prioritize
+             enhancements, I assessed which configurations led to the highest sense of realism. My results highlighted that realistic, 
+             interactive components were essential, with gravity emerging as a strong anchor for plausibility, followed by a basic level of interaction. In addition to capturing user preferences through configuration transitions and budgets, I included questionnaires to 
+            quantify plausibility levels, capturing how participants felt about object behavior in relation to real-world expectations. Findings 
+            showed that even basic interaction significantly enhanced plausibility, while more advanced features, like realistic shadows, were 
+            valued for enhancing spatial perception but deemed secondary to physics and interaction. These results inform AR design by emphasizing 
+            the importance of functional fidelity, where realistic physics and baseline interaction heighten user presence and immersion. The full 
+            report and code for the study are available on my GitHub.
+            `.trim()
+          },
+          {
+            type: "image-row",
+            images: [
+              {
+                src: "/projects/thesis/steven.png",
+                caption: "A User Interacting with the AR Basketballs"
+              },
+              {
+                src: "/projects/thesis/transitiongraph.png",
+              caption: "Most Common Path Chosen for Transitions. {x, y, z} | x = interaction level, y = physics level, z = shadow level"
+              }
+            ]
+          }
+        ],
         categories: ["Research", "Mixed Reality"]
       },
       {
@@ -334,9 +387,42 @@ function App() {
         title: "SUDS: Image Steganography Sanitizer",
         preview: "VAE-based framework for removing hidden data from images",
         ongoing: false,
-        github: null, // Add if available
-        description: "Published research developing a VAE-based sanitizer framework for removing hidden steganographic information while preserving image quality. Successfully mitigated data poisoning attacks, reducing attack success rate from 88.31% to 0.72%.",
-        categories: ["Research", "Machine Learning", "Computer Vision"]
+        github: "https://github.com/pkrobinette/suds-ecai-2023", // Add if available
+        previewImage: "/projects/suds/prev.jpg",
+        content: [
+          {
+            type: "paragraph",
+            text: `This work, which I helped build with a team of PhDs as part of an extended class project on Representation Learning, was published 
+            in ECAI and addresses the limitations of traditional steganography detection methods by proposing a novel sanitization framework 
+            called SUDS (Sanitizing Universal and Dependent Steganography). Steganography, the practice of hiding information within digital 
+            media, poses challenges for detection, particularly with advanced hiding techniques like deep-learning-based dependent and universal 
+            methods. Most existing detection methods rely on recognizing specific hiding patterns, making them ineffective against novel or 
+            unseen methods.
+            `.trim()
+          },
+          {
+            type: "image",
+            src: "/projects/suds/sudsmodel.png",
+            caption: "SUDs Architecture. C is the original image which hides secret S. The secret is sanitized using a VAE."
+          },
+          {
+            type: "paragraph",
+            text: `To address this, we designed SUDS as a variational autoencoder (VAE) model capable of sanitizing digital images embedded with 
+            hidden information without relying on prior knowledge of the hiding method. Through experimentation, we demonstrated that SUDS effectively
+             removes embedded messages from images across multiple steganography techniques, preserving image quality better than noise-based 
+             sanitization methods. Additionally, applying SUDS to a data poisoning scenario increased classifier resistance to adversarial attacks 
+             by 1375%, proving its robustness and versatility. Full details are available in the published paper, and the code can be accessed on 
+             the first author’s GitHub.
+             `.trim()
+          },
+          {
+            type: "image",
+            src: "/projects/suds/results.png",
+            caption: "Example results using SUDs. Using 3 hiding techniques (a,b,c). An image C is combined with a secret S to create C'. After being sanitized, S-hat is no longer discernible",
+            size: "small"
+          }
+        ],
+        categories: ["Research", "Machine Learning"]
       }
   ];
 
