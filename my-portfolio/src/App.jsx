@@ -19,7 +19,7 @@ const ProjectDetail = ({ project, onBack }) => (
         <div className="flex flex-wrap gap-2 mb-4">
           {project.categories.map(category => (
             <span key={category} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
-              {category}
+              {category} 
             </span>
           ))}
         </div>
@@ -121,6 +121,36 @@ function App() {
     "Machine Learning",
     "LLMs",
     "Medical",
+  ];
+  const aboutContent = [
+    {
+      type: "paragraph",
+      text: "As a recent graduate with a Master's and Bachelor's in computer science, I have specialized in machine learning and mixed reality. My experience includes implementing state-of-the-art solutions in both fields, from designing and deploying various deep learning networks to developing immersive AR environments. I also have experience in industry with applying generative AI to real-world problems. In 2024, I am actively seeking work in tech. I am most interested in medical technology, machine learning, mixed reality, and building scalable backend systems."
+    },
+    {
+      type: "image-row",
+      images: [
+        {
+          src: "/about/img1.jpeg",
+          caption:"Laos"
+        },
+        {
+          src: "/about/img2.jpeg",
+          caption: "Nepal"
+        },
+        {
+          src: "/about/img3.jpeg",
+          caption: "Tanzania"
+        }
+      ]
+    },
+    {
+      type: "paragraph",
+      text: `After finishing my accelerated Master's program at Vanderbilt, I spent 
+      over a year solo backpacking Africa and Asia. Since returning, I am working on 
+      multiple projects, interviewing, and staying up-to-date in trends in startups, machine learning, 
+      and generative AI.`.trim()
+    }
   ];
 
   const projects = [
@@ -279,6 +309,7 @@ function App() {
         ],
         categories: ["Machine Learning", "Computer Vision", "Medical"]
       },
+      /*
       {
         id: 6,
         title: "Deathris",
@@ -288,6 +319,7 @@ function App() {
         description: "Two-player VR Tetris game built in Unity using Normcore multiplayer networking. One player experiences being trapped inside a classic Tetris game, dodging falling blocks in VR.",
         categories: ["Mixed Reality"]
       },
+      */
       {
         id: 7,
         title: "AR Presence Investigation",
@@ -422,19 +454,39 @@ function App() {
               <Card>
                 <CardContent className="pt-6">
                   <h2 className="text-2xl font-semibold mb-4">About Me</h2>
-                  <p className="text-gray-600">
-                    As a recent graduate with a Master’s and Bachelor’s in computer science, 
-                    I have specialized in machine learning and mixed reality. My experience 
-                    includes implementing state-of-the-art solutions in both fields, from designing 
-                    and deploying various deep learning networks to developing immersive AR environments. 
-                    I also have experience in industry with applying generative AI to real-world problems. 
-                    In 2024, I am actively seeking work in tech. I am most interested in medical technology,
-                    machine learning, mixed reality, and building scalable backend systems.  
-
-                    After finishing my accelerated Master's program at Vanderbilt, I spent over a year 
-                    solo backpacking Africa and Asia. Since returning, I have been working on multiple projects, 
-                    interviewing, and staying up-to-date in trends in machine learning, startups, and generative AI. 
-                  </p>
+                  <div className="grid gap-8">
+                    {aboutContent.map((item, idx) => {
+                      if (item.type === "paragraph") {
+                        return (
+                          <p key={idx} className="text-gray-600 leading-relaxed">
+                            {item.text}
+                          </p>
+                        );
+                      } // In your About section only
+                      else if (item.type === "image-row") {
+                        return (
+                          <div key={idx} className="grid grid-cols-3 gap-8 md:gap-12 lg:gap-16 max-w-4xl mx-auto px-4"> {/* Increased gap and centered */}
+                            {item.images.map((image, imageIdx) => (
+                              <div key={imageIdx} className="flex flex-col items-center">
+                                <div className="aspect-[16/9] w-full max-w-[300px]"> {/* Added max-width */}
+                                  <img 
+                                    src={image.src}
+                                    alt={image.caption || `Image ${imageIdx + 1}`}
+                                    className="rounded-lg shadow-md w-full h-full object-cover"
+                                  />
+                                </div>
+                                {image.caption && (
+                                  <p className="text-sm text-gray-500 italic mt-2">
+                                    {image.caption}
+                                  </p>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        );
+                      }
+                    })}
+                  </div>
                 </CardContent>
               </Card>
             </TabsContent>
