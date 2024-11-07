@@ -301,11 +301,11 @@ function App() {
             images: [
               {
                 src: "/projects/thesis/steven.png",
-                caption: "A User Interacting with the AR Basketballs"
+                caption: "A user interacting with the AR basketballs"
               },
               {
                 src: "/projects/thesis/transitiongraph.png",
-              caption: "Most Common Path Chosen for Transitions. {x, y, z} | x = interaction level, y = physics level, z = shadow level"
+              caption: "Most common path chosen for transitions. {x, y, z} | x = interaction level, y = physics level, z = shadow level"
               }
             ]
           }
