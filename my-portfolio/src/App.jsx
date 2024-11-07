@@ -47,7 +47,7 @@ const ProjectDetail = ({ project, onBack }) => (
         } else if (item.type === "image") {
           const sizeClasses = {
             small: "max-w-[200px]",
-            medium: "max-w-[500px]",
+            medium: "max-w-[300px]",
             large: "max-w-[600px]",
             // Add more sizes as needed
           };
@@ -260,63 +260,8 @@ function App() {
             `.trim()
         }
       ],
-      categories: ["Mixed Reality", "Machine Learning", "Full Stack"]
+      categories: ["Mixed Reality", "Full Stack", "Computer Vision", "Machine Learning"]
     },
-    {
-        id: 3,
-        title: "Surgical Gesture and Skill Recognition",
-        preview: "Contrastive learning for surgical skill assessment using surgical videos and robot kinematics",
-        previewImage: "/projects/contrastive/images.jpg",
-        ongoing: false,
-        github: "https://github.com/nshehadeh/contrastive-gesture-skill",
-        content: [
-          {
-            type: "paragraph",
-            text: `
-              This work implements a contrastive learning framework for gesture and skill recognition, focusing 
-              on modeling latent space representations from endoscope images captured during robot-assisted surgery. 
-              Building on Wu et al.'s encoder-decoder structure, I introduced contrastive learning techniques to improve 
-              the separability of the embedding space, allowing for more effective classification of surgical gestures and 
-              skills. I explored different contrastive learning models, starting with data augmentation-based contrastive 
-              learning using optical flow data, followed by a multi-modal model incorporating kinematic data for sample 
-              pairing, and finally a time-invariant model using Fourier transforms. Each model was designed to push similar 
-              gestures closer in the embedding space while increasing the separation of distinct gestures.
-            `.trim(),
-          },
-          {
-            type: "image",
-            src: "/projects/contrastive/model.png",
-            caption: "Model Architecture for Contrastive Model Using Kinematics for Positive and Negative Samples"
-
-          },
-          {
-            type: "paragraph",
-            text: `
-            Throughout the project, I created positive and negative sample pairs, applied contrastive loss functions, and 
-            incorporated triplet loss to enhance the discriminative power of the embeddings. Once trained, the models were 
-            evaluated for classification accuracy and visualized through UMAP projections, highlighting gesture, skill, 
-            and user clusters. While contrastive learning did not produce the expected accuracy improvements—likely due 
-            to the small dataset size—the embeddings reveal insights into skill variations across users. Future iterations 
-            could refine the model structure and use larger datasets for better generalization. The full report and code 
-            are available on my GitHub.
-            `.trim()
-          },
-          {
-            type: "image-row",
-            images: [
-              {
-                src: "/projects/contrastive/gesture.png",
-                caption: "Surgical Gesture UMAP for Kinematic Contrastive Model"
-              },
-              {
-                src: "/projects/contrastive/skill.png",
-                caption: "Surgical Skill UMAP for Kinematic Contrastive Model"
-              }
-            ]
-          },
-        ],
-        categories: ["Machine Learning", "Computer Vision", "Medical"]
-      },
       /*
       {
         id: 6,
@@ -331,21 +276,14 @@ function App() {
       {
         id: 7,
         title: "Investigation of Presence in AR",
-        preview: "HoloLens2 research platform for a user study on plausibility in AR",
+        preview: "Master's Thesis building a HoloLens2 research platform for a user study on plausibility in AR",
         previewImage: "/projects/thesis/full_scene.png",
         ongoing: false,
         github: "https://github.com/nshehadeh/ar_presence",
         content:[
           {
             type: "paragraph",
-            text: `My Master's thesis, An Investigation of Presence in Augmented Reality (AR), investigated the factors that contribute
-            to a sense of presence and plausibility for virtual objects in the real world displayed in optical-see-through (OST) displays.
-            This was the first study to use psychophyhsical methods to come up with a systemic way to quantitatively measure how people percieve
-            virtual objects, and inform current models of presence in AR with the results. 
-            
-            I conducted a user study in a controlled AR environment 
-            on the HoloLens2 headset, where participants interacted with virtual objects under different configurations. The study 
-            systematically varied three core factors: interaction, physics, and shadows.
+            text: `
             `.trim()
           },
           {
@@ -355,15 +293,7 @@ function App() {
           },
           {
             type: "paragraph",
-            text: `Using a Markov chain 
-            to analyze transition choices and a budgeting task to prioritize
-             enhancements, I assessed which configurations led to the highest sense of realism. My results highlighted that realistic, 
-             interactive components were essential, with gravity emerging as a strong anchor for plausibility, followed by a basic level of interaction. In addition to capturing user preferences through configuration transitions and budgets, I included questionnaires to 
-            quantify plausibility levels, capturing how participants felt about object behavior in relation to real-world expectations. Findings 
-            showed that even basic interaction significantly enhanced plausibility, while more advanced features, like realistic shadows, were 
-            valued for enhancing spatial perception but deemed secondary to physics and interaction. These results inform AR design by emphasizing 
-            the importance of functional fidelity, where realistic physics and baseline interaction heighten user presence and immersion. The full 
-            report and code for the study are available on my GitHub.
+            text: `
             `.trim()
           },
           {
@@ -423,6 +353,112 @@ function App() {
           }
         ],
         categories: ["Research", "Machine Learning"]
+      },
+      {
+        id: 3,
+        title: "Surgical Gesture and Skill Recognition",
+        preview: "Contrastive learning for surgical skill assessment using surgical videos and robot kinematics",
+        previewImage: "/projects/contrastive/images.jpg",
+        ongoing: false,
+        github: "https://github.com/nshehadeh/contrastive-gesture-skill",
+        content: [
+          {
+            type: "paragraph",
+            text: `
+              This work implements a contrastive learning framework for gesture and skill recognition, focusing 
+              on modeling latent space representations from endoscope images captured during robot-assisted surgery. 
+              Building on Wu et al.'s encoder-decoder structure, I introduced contrastive learning techniques to improve 
+              the separability of the embedding space, allowing for more effective classification of surgical gestures and 
+              skills. I explored different contrastive learning models, starting with data augmentation-based contrastive 
+              learning using optical flow data, followed by a multi-modal model incorporating kinematic data for sample 
+              pairing, and finally a time-invariant model using Fourier transforms. Each model was designed to push similar 
+              gestures closer in the embedding space while increasing the separation of distinct gestures.
+            `.trim(),
+          },
+          {
+            type: "image",
+            src: "/projects/contrastive/model.png",
+            caption: "Model Architecture for Contrastive Model Using Kinematics for Positive and Negative Samples"
+
+          },
+          {
+            type: "paragraph",
+            text: `
+            Throughout the project, I created positive and negative sample pairs, applied contrastive loss functions, and 
+            incorporated triplet loss to enhance the discriminative power of the embeddings. Once trained, the models were 
+            evaluated for classification accuracy and visualized through UMAP projections, highlighting gesture, skill, 
+            and user clusters. While contrastive learning did not produce the expected accuracy improvements—likely due 
+            to the small dataset size—the embeddings reveal insights into skill variations across users. Future iterations 
+            could refine the model structure and use larger datasets for better generalization. The full report and code 
+            are available on my GitHub.
+            `.trim()
+          },
+          {
+            type: "image-row",
+            images: [
+              {
+                src: "/projects/contrastive/gesture.png",
+                caption: "Surgical Gesture UMAP for Kinematic Contrastive Model"
+              },
+              {
+                src: "/projects/contrastive/skill.png",
+                caption: "Surgical Skill UMAP for Kinematic Contrastive Model"
+              }
+            ]
+          },
+        ],
+        categories: ["Machine Learning", "Computer Vision", "Medical"]
+      },
+      {
+        id: 9,
+        title: "BEAM Lab, Acoustic Window Detection & Image Quality Deep Learning",
+        preview: "Research done in Vanderbilt's Institute for Surgery and Engineering",
+        ongoing: false,
+        github: null, // Add if available
+        previewImage: "/projects/ultrasound/demo.gif",
+        content: [
+          {
+            type: "paragraph",
+            text: `
+            `.trim()
+          },
+          {
+            type: "image",
+            src: "/projects/ultrasound/demo.gif",
+            caption: "Real-time GUI assisting with probe placement during live transcranial ultrasound"
+          },
+          {
+            type: "paragraph",
+            text: `
+                This project began as a 10-week summer internship as a researcher at 
+                Vanderbilt's Institute for Surgery and Engineering (VISE) in Dr. Brett 
+                Byram's BEAM Lab, working under PhD student Emelina Vienneau. Emelina’s 
+                research focuses on enabling transcranial ultrasound imaging of the brain. 
+                I independently developed an acoustic window detection system that calculates 
+                the lag-one coherence of ultrasound images in real-time. Lag-one coherence 
+                serves as a metric for evaluating image quality at a specific point. My software
+                processed real-time ultrasound images, computed the lag-one coherence, and
+                displayed results via a GUI to guide the probe operator. The system was implemented
+                on a Verasonics ultrasound machine, using MATLAB, MEX (MATLAB's C interface), and 
+                CUDA for GPU processing.
+             `.trim()
+          },
+          {
+            type: "image",
+            src: "/projects/ultrasound/present.png",
+            caption: "Presenting my work at the VISE summer conference",
+            size: "medium"
+          },
+          {
+            type: "paragraph",
+            text: `
+            After presenting my work, I continued as a lab researcher for an additional year, optimizing the acoustic window detection algorithm through different thread and block configurations.
+            I also worked on a deep learning project to artificially improve ultrasound image quality post-collection. Using data from Emelina's work on coded excitation,
+            a technique used to increase the signal-to-noise ratio (SNR) of an ultrasound image during collection, I tested different deep learning architectures to 
+            artificially apply the same effect. My work resulted in some promising initial results, increasing SNR in phantom data by 15% using a UNET.`
+          }
+        ],
+        categories: ["Research", "Machine Learning", "Medical", "Computer Vision"]
       }
   ];
 
@@ -457,13 +493,9 @@ function App() {
       companyLogo: "/experiences/vise-logo.png",
       projectLinks: [  // Optional array of related projects
         {
-          id: 1,  // matches the id in your projects array
-          label: "Medical Image Analysis Platform"  // display name
+          id: 9,  // matches the id in your projects array
+          label: "More Details on BEAM Lab Research"  // display name
         },
-        {
-          id: 2,
-          label: "Virtual Reality Training System"
-        }
       ]
     }
   ];
