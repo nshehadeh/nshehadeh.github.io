@@ -573,15 +573,44 @@ function App() {
 
         {/* Main Content */}
         <main className="max-w-4xl mx-auto">
-          <Tabs defaultValue={activeTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-5">
-              <TabsTrigger value="about">About</TabsTrigger>
-              <TabsTrigger value="experience">Experience</TabsTrigger>
-              <TabsTrigger value="projects">Projects</TabsTrigger>
-              <TabsTrigger value="resume">Resume</TabsTrigger>
-              <TabsTrigger value="blog">Blog</TabsTrigger>
+          <Tabs defaultValue={activeTab} className="w-full space-y-4">
+            {/* Modified TabsList to prevent overflow */}
+            <div className="w-full border-b">
+            <TabsList className="h-auto flex flex-wrap bg-muted p-1">
+              <TabsTrigger 
+                value="about"
+                className="flex-1 min-w-[120px]"
+              >
+                About
+              </TabsTrigger>
+              <TabsTrigger 
+                value="experience"
+                className="flex-1 min-w-[120px]"
+              >
+                Experience
+              </TabsTrigger>
+              <TabsTrigger 
+                value="projects"
+                className="flex-1 min-w-[120px]"
+              >
+                Projects
+              </TabsTrigger>
+              <TabsTrigger 
+                value="resume"
+                className="flex-1 min-w-[120px]"
+              >
+                Resume
+              </TabsTrigger>
+              <TabsTrigger 
+                value="blog"
+                className="flex-1 min-w-[120px]"
+              >
+                Blog
+              </TabsTrigger>
             </TabsList>
+            </div>
 
+            {/* About section with improved mobile image grid */}
             <TabsContent value="about">
               <Card>
                 <CardContent className="pt-6">
@@ -594,13 +623,13 @@ function App() {
                             {item.text}
                           </p>
                         );
-                      } // In your About section only
+                      }
                       else if (item.type === "image-row") {
                         return (
-                          <div key={idx} className="grid grid-cols-3 gap-8 md:gap-12 lg:gap-16 max-w-4xl mx-auto px-4"> {/* Increased gap and centered */}
+                          <div key={idx} className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                             {item.images.map((image, imageIdx) => (
                               <div key={imageIdx} className="flex flex-col items-center">
-                                <div className="aspect-[16/9] w-full max-w-[300px]"> {/* Added max-width */}
+                                <div className="w-full min-h-[200px] sm:min-h-[150px]">
                                   <img 
                                     src={image.src}
                                     alt={image.caption || `Image ${imageIdx + 1}`}
@@ -608,7 +637,7 @@ function App() {
                                   />
                                 </div>
                                 {image.caption && (
-                                  <p className="text-sm text-gray-500 italic mt-2">
+                                  <p className="text-sm text-gray-500 italic mt-2 text-center">
                                     {image.caption}
                                   </p>
                                 )}
