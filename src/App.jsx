@@ -284,6 +284,14 @@ function App() {
           {
             type: "paragraph",
             text: `
+            My thesis investigates the factors contributing to a sense of presence in augmented reality (AR) by adapting principles 
+            from virtual reality (VR) and applying psychophysical methods. I conducted a user study in a controlled AR environment on 
+            the Hololens 2 headset, where participants interacted with virtual objects under different configurations. The study
+             systematically varied three core factors—interaction level, physics (e.g., gravity and collisions), and shadow realism—each 
+             essential to user perception in AR. Using a Markov chain to analyze transition choices and a budgeting task to prioritize 
+             enhancements, I assessed which configurations led to the highest sense of realism. My results highlighted that realistic, 
+             interactive components were essential, with gravity emerging as a strong anchor for plausibility, followed by user-applied 
+             physics.
             `.trim()
           },
           {
@@ -294,6 +302,12 @@ function App() {
           {
             type: "paragraph",
             text: `
+            In addition to capturing user preferences through configuration transitions and budgets, I included questionnaires to quantify 
+            plausibility levels, capturing how participants felt about object behavior in relation to real-world expectations. Findings showed 
+            that even basic interaction significantly enhanced plausibility, while more advanced features, like realistic shadows, were valued
+             for enhancing spatial perception but deemed secondary to physics and interaction. These results inform AR design by emphasizing 
+             the importance of functional fidelity, where realistic physics and baseline interaction heighten user presence and immersion. The
+              full thesis and code are available on my GitHub.
             `.trim()
           },
           {
