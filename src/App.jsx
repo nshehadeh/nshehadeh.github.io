@@ -118,7 +118,7 @@ function App() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedExperience, setSelectedExperience] = useState(null);
   const [selectedCategories, setSelectedCategories] = useState([]);
-  const [activeTab, setActiveTab] = useState("about");
+  const [activeTab, setActiveTab] = useState("projects");
 
   const categories = [
     "Research",
