@@ -132,7 +132,13 @@ function App() {
   const aboutContent = [
     {
       type: "paragraph",
-      text: "I am a recent graduate with a Master's and Bachelor's in Computer Science, specializing in machine learning and mixed reality. My experience includes implementing state-of-the-art solutions in both fields, from designing and deploying various deep learning networks to developing immersive AR environments. I also have experience in industry with applying generative AI to real-world problems. In 2024, I am actively seeking work in tech. I am most interested in medical technology, machine learning, mixed reality, and building scalable backend systems."
+      text: `I recently completed a Bachelor's and Master's in Computer Science, 
+      specializing in machine learning and mixed reality. My academic experience 
+      includes implementing state-of-the-art solutions in both fields, from designing 
+      and deploying deep learning networks to creating immersive AR environments. I also
+       have industry experience applying generative AI to real-world challenges. In 2024, 
+       I am actively seeking opportunities in tech, with a focus on machine learning 
+       and backend engineering.`.trim()
     },
     {
       type: "image-row",
@@ -153,10 +159,10 @@ function App() {
     },
     {
       type: "paragraph",
-      text: `After finishing my accelerated Master's program at Vanderbilt, I spent 
-      over a year solo backpacking Africa and Asia. Since returning, I am working on 
-      multiple projects, interviewing, and staying up-to-date in trends in startups, machine learning, 
-      and generative AI.`.trim()
+      text: `After completing my accelerated Master's program at Vanderbilt, 
+      I spent over a year solo backpacking across Africa and Asia. Since returning,
+       I have been working on various projects, preparing for interviews, and staying 
+       current with trends in startups, machine learning, and generative AI.`.trim()
     }
   ];
 
@@ -175,8 +181,8 @@ function App() {
             PolicyBot is a full-stack chatbot powered by large language models (LLMs) 
             and retrieval-augmented generation (RAG), designed to make U.S. government 
             policies more accessible to the public. PolicyBot draws from White House 
-            "Briefing Room" documents—speeches, interviews, press briefings, and more—using 
-            similarity-based searches to deliver answers that directly respond to user questions. 
+            "Briefing Room" documents (speeches, interviews, press briefings, and more) using 
+            similarity searches to deliver contextually relevent answers that directly respond to user questions. 
             Originally, I created PolicyBot to provide users with easy access to information 
             about the Biden administration, inspired by how LLMs can rapidly organize vast 
             datasets and present information in digestible formats, potentially transforming 
