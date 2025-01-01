@@ -78,7 +78,7 @@ Error generating stack: `+l.message+`
       and used deep learning to enhance ultrasound image quality. My work also includes published
        research on variational autoencoders (VAEs) and studying perception in augmented reality for my Master's 
        thesis. Additionally, I have industry experience applying generative AI to real-world challenges at Accenture 
-       Federal Services. Recently, I've been building PolicyAI, a full-stack system that uses agentic LLMs 
+       Federal Services. Recently, I've been building PolicyAI, a full-stack system that uses LLM agents 
        for policy Q&A, search, and analysis. In 2025, I am actively seeking opportunities in tech, focusing on machine 
        learning and backend engineering.`.trim()},{type:"image-row",images:[{src:"/about/img1.jpeg",caption:"Laos"},{src:"/about/img2.jpeg",caption:"Nepal"},{src:"/about/img3.jpeg",caption:"Tanzania"}]},{type:"paragraph",text:`After completing my accelerated Master's program at Vanderbilt, 
       I spent over a year solo backpacking across Africa and Asia. Since returning,
