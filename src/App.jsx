@@ -132,13 +132,15 @@ function App() {
   const aboutContent = [
     {
       type: "paragraph",
-      text: `I recently completed a Bachelor's and Master's in Computer Science, 
-      specializing in machine learning and mixed reality. My academic experience 
-      includes implementing state-of-the-art solutions in both fields, from designing 
-      and deploying deep learning networks to creating immersive AR environments. I also
-       have industry experience applying generative AI to real-world challenges. In 2024, 
-       I am actively seeking opportunities in tech, with a focus on machine learning 
-       and backend engineering.`.trim()
+      text:  `I recently completed a BS/MS in Computer Science at Vanderbilt University, 
+      specializing in machine learning and mixed reality. I have a diverse research background, including 
+      a year in a biomedical engineering lab where I developed a CUDA kernel for real-time ultrasound guidance 
+      and used deep learning to enhance ultrasound image quality. My work also includes published
+       research on variational autoencoders (VAEs) and studying perception in augmented reality for my Master's 
+       thesis. Additionally, I have industry experience applying generative AI to real-world challenges at Accenture 
+       Federal Services. Recently, I've been building PolicyAI, a full-stack system that uses agentic LLMs 
+       for policy Q&A, search, and analysis. In 2025, I am actively seeking opportunities in tech, focusing on machine 
+       learning and backend engineering.`.trim()
     },
     {
       type: "image-row",
@@ -162,14 +164,14 @@ function App() {
       text: `After completing my accelerated Master's program at Vanderbilt, 
       I spent over a year solo backpacking across Africa and Asia. Since returning,
        I have been working on various projects, preparing for interviews, and staying 
-       current with trends in startups, machine learning, and generative AI.`.trim()
+       current with trends in tech, specifically machine learning, and generative AI.`.trim()
     }
   ];
 
   const projects = [
     {
       id: 1,
-      title: "PolicyBot",
+      title: "PolicyAI",
       previewImage: "/projects/policy-bot/policybot.gif",
       preview: "LLM and RAG powered chatbot that answers questions about the federal government's policies",
       ongoing: true,
@@ -178,47 +180,46 @@ function App() {
         {
           type: "paragraph",
           text: `
-            PolicyBot is a full-stack chatbot powered by large language models (LLMs) 
+            PolicyAI is a full-stack chatbot powered by large language models (LLMs) 
             and retrieval-augmented generation (RAG), designed to make U.S. government 
-            policies more accessible to the public. PolicyBot draws from White House 
-            "Briefing Room" documents (speeches, interviews, press briefings, and more) using 
-            similarity searches to deliver contextually relevent answers that directly respond to user questions. 
-            Originally, I created PolicyBot to provide users with easy access to information 
-            about the Biden administration, inspired by how LLMs can rapidly organize vast 
-            datasets and present information in digestible formats, potentially transforming 
-            how we access public information.
+            policies more accessible to the public. Currently, PolicyAI draws from White House 
+            "Briefing Room" documents (speeches, interviews, press briefings, and more) using an agentic workflow built
+            on LangGraph to process user queries. The system adds context to queries based on chat history, 
+            rewrites questions to improve search accuracy, and grades retrieved documents for relevency before
+            generating a final answer. Originally, I created PolicyAI to provide users with easy access to legislative and
+            policy information through Q&A and document search, inspired by how LLMs can rapidly organize large amounts of
+            unstructured data and present information in digestible formats.
           `.trim()        
         },
         {
           type: "image",
-          src: "/projects/policy-bot/policybot.gif", // Update with your actual image path
-          caption: "PolicyBot Chat Example"
+          src: "/projects/policy-bot/policybot.gif", 
+          caption: "PolicyAI Chat Example"
         },
         {
           type: "paragraph",
           text: `
-            The project is built on a Django backend and a React frontend.
+            The web application is built on a Django backend and a React frontend.
             The Django backend defines a REST API that connects to a RAG system 
-            powered by LangChain, which retrieves and processes data to provide responses.
+            powered by LangGraph, which retrieves and processes data to provide responses.
             LangChain works with a Pinecone vector database to search document chunks for
             relevance, enhancing responses with custom system prompts and chat history. 
             User data, including chat histories, is stored in PostgreSQL through Django's 
             ORM, while MongoDB stores full documents for the LLM to reference as needed. I 
             compiled the initial dataset by scraping White House documents using Python scripts
-            with BeautifulSoup.
+            with BeautifulSoup. I also used Django channels to implement a WebSocket connection,
+            which streams responses to the frontend in real time, creating a more natural chat experience.
             `.trim()
         },
         {
           type: "paragraph",
           text: `
-            Recently, I transitioned the response system from traditional API requests to a 
-            WebSocket-based streaming approach. This allows answers to be sent to the frontend 
-            in real time, simulating the experience of chatbots like ChatGPT, where responses 
-            are displayed incrementally as they're generated. Currently, I am working on 
-            enhancing the retrieval system by integrating RAG-Fusion into the LangChain 
-            retriever and developing a continuous integration pipeline to automatically 
-            update the dataset with new documents as they're published, ensuring PolicyBot 
-            stays current on emerging topics and policy changes.
+            I have large plans for the future of PolicyAI, including developing a knowledge graph that holds
+            information for relationships between legislation, executive orders, and other policy documents. This would
+            give the system a more comprehensive understanding of the U.S. government's policies and how they relate to each other, improving
+            RAG and the system's ability to hand broad questions, and deliver my analysis connecting different policy ideas. Please
+            check out the GitHub repository for more information and to see the codebase as I continue adding new features and
+            preparing to launch the MVP.
             `.trim()
         }
       ],
@@ -235,15 +236,15 @@ function App() {
         {
           type: "paragraph",
           text: `
-            In this project, I developed XROG, an interactive object generation system 
-            for augmented reality (AR) on Microsoft’s HoloLens2. The system leverages 
+            XROG is an interactive object generation system 
+            for augmented reality (AR) developed on Microsoft’s HoloLens2. The system allows for 
             real-time hand tracking and custom gesture recognition to classify 3D sketches 
             drawn by users, which are then used to generate virtual 3D objects within an AR 
-            environment. The project involved the complete pipeline of data collection, model 
+            environment. I built a end-to-end machine learning system including data collection, model 
             training, and real-time deployment. Using Unity and Microsoft’s Mixed Reality Toolkit, 
-            I created a dataset by recording hand gestures that sketch various shapes, saved as 
+            I created a dataset by tracking hand sketches that capture various shapes, saved as 
             sparse 3D point clouds. To make the data model-ready, I resampled, normalized, and 
-            applied augmentations like translations, rotations, and noise, which increased the 
+            applied augmentations like translations, rotations, and noise, increasing the 
             dataset size and robustness.
             `.trim()
         },
@@ -255,11 +256,11 @@ function App() {
         {
           type: "paragraph",
           text: `
-            After data processing, I trained a machine learning model using an SVM to classify 
-            these 3D sketches into object categories like swords, shields, and stars. The model 
-            was then deployed via a RESTful API using Flask and Heroku to handle real-time inference 
-            requests from the Unity application. This setup enabled users to draw gestures in real-time, 
-            have their input classified, and instantly see the corresponding 3D object generated in 
+            After data processing, I trained a SVM to classify 
+            these 3D sketches into object categories: swords, shields, and stars. I deployed the model 
+            via a RESTful API using Flask and hosted on Heroku's cloud to handle real-time inference 
+            requests through the Unity application. This setup enabled users to draw gestures in real-time, 
+            have their input classified, and see the corresponding 3D object generated in 
             the AR scene. The Unity application integrates seamlessly with the cloud service, creating 
             an intuitive and interactive AR experience that showcases real-time object generation. 
             The full report and code for this project are available on my GitHub.
@@ -293,8 +294,8 @@ function App() {
             My thesis investigates the factors contributing to a sense of presence in augmented reality (AR) by adapting principles 
             from virtual reality (VR) and applying psychophysical methods. I conducted a user study in a controlled AR environment on 
             the Hololens 2 headset, where participants interacted with virtual objects under different configurations. The study
-             systematically varied three core factors—interaction level, physics (e.g., gravity and collisions), and shadow realism—each 
-             essential to user perception in AR. Using a Markov chain to analyze transition choices and a budgeting task to prioritize 
+             systematically varied three essential factors to user perception in AR: interaction level, physics (e.g., gravity and collisions), and shadow realism. 
+             Using a Markov chain to analyze transition choices and a budgeting task to prioritize 
              enhancements, I assessed which configurations led to the highest sense of realism. My results highlighted that realistic, 
              interactive components were essential, with gravity emerging as a strong anchor for plausibility, followed by user-applied 
              physics.
@@ -342,7 +343,7 @@ function App() {
         content: [
           {
             type: "paragraph",
-            text: `This work, which I helped build with a team of PhDs as part of an extended class project on Representation Learning, was published 
+            text: `This work, which I helped build with a team of PhDs as part of an extended class project studying Representation Learning, was published 
             in ECAI and addresses the limitations of traditional steganography detection methods by proposing a novel sanitization framework 
             called SUDS (Sanitizing Universal and Dependent Steganography). Steganography, the practice of hiding information within digital 
             media, poses challenges for detection, particularly with advanced hiding techniques like deep-learning-based dependent and universal 
@@ -359,10 +360,10 @@ function App() {
             type: "paragraph",
             text: `To address this, we designed SUDS as a variational autoencoder (VAE) model capable of sanitizing digital images embedded with 
             hidden information without relying on prior knowledge of the hiding method. Through experimentation, we demonstrated that SUDS effectively
-             removes embedded messages from images across multiple steganography techniques, preserving image quality better than noise-based 
-             sanitization methods. Additionally, applying SUDS to a data poisoning scenario increased classifier resistance to adversarial attacks 
-             by 1375%, proving its robustness and versatility. Full details are available in the published paper, and the code can be accessed on 
-             the first author’s GitHub.
+            removes embedded messages from images across multiple steganography techniques, preserving image quality better than noise-based 
+            sanitization methods. Additionally, applying SUDS to a data poisoning scenario increased classifier resistance to adversarial attacks 
+            from 88.31% to 0.72%, proving its robustness and versatility. Full details are available in the published paper, and the code can be accessed on 
+            the first author’s GitHub.
              `.trim()
           },
           {
@@ -390,7 +391,7 @@ function App() {
               Building on Wu et al.'s encoder-decoder structure, I introduced contrastive learning techniques to improve 
               the separability of the embedding space, allowing for more effective classification of surgical gestures and 
               skills. I explored different contrastive learning models, starting with data augmentation-based contrastive 
-              learning using optical flow data, followed by a multi-modal model incorporating kinematic data for sample 
+              learning using optical flow data, followed by incorporating kinematic data for sample 
               pairing, and finally a time-invariant model using Fourier transforms. Each model was designed to push similar 
               gestures closer in the embedding space while increasing the separation of distinct gestures.
             `.trim(),
@@ -408,7 +409,7 @@ function App() {
             incorporated triplet loss to enhance the discriminative power of the embeddings. Once trained, the models were 
             evaluated for classification accuracy and visualized through UMAP projections, highlighting gesture, skill, 
             and user clusters. While contrastive learning did not produce the expected accuracy improvements—likely due 
-            to the small dataset size—the embeddings reveal insights into skill variations across users. Future iterations 
+            to the small dataset size, the embeddings reveal insights into skill variations across users. Future iterations 
             could refine the model structure and use larger datasets for better generalization. The full report and code 
             are available on my GitHub.
             `.trim()
@@ -450,9 +451,8 @@ function App() {
           {
             type: "paragraph",
             text: `
-                This project began as a 10-week summer internship as a researcher at 
-                Vanderbilt's Institute for Surgery and Engineering (VISE) in Dr. Brett 
-                Byram's BEAM Lab, working under PhD student Emelina Vienneau. Emelina’s 
+                My work in Vanderbilt's Institute for Surgery and Engineering (VISE) in Dr. Brett 
+                Byram's BEAM Lab began as a 10-week summer internship as a researcher under PhD student Emelina Vienneau. Emelina’s 
                 research focuses on enabling transcranial ultrasound imaging of the brain. 
                 I independently developed an acoustic window detection system that calculates 
                 the lag-one coherence of ultrasound images in real-time. Lag-one coherence 
@@ -475,7 +475,7 @@ function App() {
             After presenting my work, I continued as a lab researcher for an additional year, optimizing the acoustic window detection algorithm through different thread and block configurations.
             I also worked on a deep learning project to artificially improve ultrasound image quality post-collection. Using data from Emelina's work on coded excitation,
             a technique used to increase the signal-to-noise ratio (SNR) of an ultrasound image during collection, I tested different deep learning architectures to 
-            artificially apply the same effect. My work resulted in some promising initial results, increasing SNR in phantom data by 15% using a UNET.`
+            artificially apply the same effect on previously collected data. My work resulted in some promising initial results, increasing SNR in phantom data by 15% using a UNET.`
           }
         ],
         categories: ["Research", "Machine Learning", "Medical", "Computer Vision"]
@@ -493,7 +493,7 @@ function App() {
       achievements: [
         "Conducted research on the application and adaptation of emerging AI technologies for federal services",
         "Implemented CLIP-GEN to synthesize images to improve hotel classification in human trafficking photographs",
-        "Preprocessed and cleaned the Hotels50k dataset on an AWS EC2 instance",
+        "Used AWS EC2 for scalable data preprocessing and distributed multi-GPU training to reduce model training time",
         "Fine-tuned CLIP to learn latent state representations of hotel picture and location pairs using HuggingFace and multi-GPU training, resulting in 98% accuracy classifying hotel chains and the generation of basic synthetic images"
       ],
       companyLogo: "/experiences/afs-logo.jpg"
@@ -506,7 +506,7 @@ function App() {
       preview: "Researcher in Biomedical Elasticity and Acoustic Measurement Lab",
       description: "Detailed description of the role and responsibilities...",
       achievements: [
-        "Implemented an algorithm and GUI to facilitate live ultrasound placement on patients",
+        "Implemented a backend system and GUI to facilitate live ultrasound placement on patients",
         "Engineered an acoustic window detection algorithm using MATLAB, MEX, and CUDA (C) for efficient real-time ultrasound analysis on beamformed data",
         "Improved ultrasound image quality with UNET, achieving 15% average SNR gains on phantom RF data"
       ],
