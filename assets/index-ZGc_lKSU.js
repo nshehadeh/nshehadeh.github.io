@@ -81,9 +81,9 @@ Error generating stack: `+l.message+`
        Federal Services. Recently, I've been building PolicyAI, a full-stack system that uses LLM agents 
        for policy Q&A, search, and analysis. In 2025, I am actively seeking opportunities in tech, focusing on machine 
        learning and backend engineering.`.trim()},{type:"image-row",images:[{src:"/about/img1.jpeg",caption:"Laos"},{src:"/about/img2.jpeg",caption:"Nepal"},{src:"/about/img3.jpeg",caption:"Tanzania"}]},{type:"paragraph",text:`After completing my accelerated Master's program at Vanderbilt, 
-      I spent over a year solo backpacking across Africa and Asia. Since returning,
-       I have been working on various projects, preparing for interviews, and staying 
-       current with trends in tech, specifically machine learning, and generative AI.`.trim()}],v=[{id:1,title:"PolicyAI",previewImage:"/projects/policy-bot/policybot.gif",preview:"LLM and RAG powered chatbot that answers questions about the federal government's policies",ongoing:!0,github:"https://github.com/nshehadeh/policy-bot",content:[{type:"paragraph",text:`
+      I backpacked across Africa and Asia. Since returning, I have been working 
+      on various projects, staying current with trends in machine learning and generative 
+      AI by reading technical blogs and research papers, and interviewing`.trim()}],v=[{id:1,title:"PolicyAI",previewImage:"/projects/policy-bot/policybot.gif",preview:"LLM and RAG powered chatbot that answers questions about the federal government's policies",ongoing:!0,github:"https://github.com/nshehadeh/policy-bot",content:[{type:"paragraph",text:`
             PolicyAI is a full-stack chatbot powered by large language models (LLMs) 
             and retrieval-augmented generation (RAG), designed to make U.S. government 
             policies more accessible to the public. Currently, PolicyAI draws from White House 
