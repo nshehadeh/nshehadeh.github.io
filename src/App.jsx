@@ -57,7 +57,7 @@ const ProjectDetail = ({ project, onBack }) => (
               <img 
                 src={item.src}
                 alt={item.caption || `${project.title} image ${idx}`}
-                className={`rounded-lg shadow-md w-full ${sizeClasses[item.size] || sizeClasses.large}`}
+                className={`rounded-lg shadow-md w-full ${item.src.includes('policybot.gif') ? 'max-w-[800px]' : sizeClasses[item.size] || sizeClasses.large}`}
               />
               {item.caption && (
                 <p className="text-sm text-gray-500 italic max-w-[600px]">
@@ -118,7 +118,7 @@ function App() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedExperience, setSelectedExperience] = useState(null);
   const [selectedCategories, setSelectedCategories] = useState([]);
-  const [activeTab, setActiveTab] = useState("projects");
+  const [activeTab, setActiveTab] = useState("about");
 
   const categories = [
     "Research",
@@ -132,39 +132,39 @@ function App() {
   const aboutContent = [
     {
       type: "paragraph",
-      text:  `I recently completed a BS/MS in Computer Science at Vanderbilt University, 
-      specializing in machine learning and mixed reality. I have a diverse research background, including 
-      a year in a biomedical engineering lab where I developed a CUDA kernel for real-time ultrasound guidance 
-      and used deep learning to enhance ultrasound image quality. My work also includes published
-       research on variational autoencoders (VAEs) and studying perception in augmented reality for my Master's 
-       thesis. Additionally, I have industry experience applying generative AI to real-world challenges at Accenture 
-       Federal Services. Recently, I've been building PolicyAI, a full-stack system that uses agentic LLMs 
-       for policy Q&A, search, and analysis. In 2025, I am actively seeking opportunities in tech, focusing on machine 
-       learning and backend engineering.`.trim()
+      text:  `I'm a full-stack software engineer at AviaryAI, a YC-backed startup developing AI voice agents for the financial industry. I hold a BS and MS in Computer Science from Vanderbilt University, where I specialized in machine learning and mixed reality.`.trim()
+    },
+    {type: "paragraph",
+      text: `
+
+      At Vanderbilt, my research included work in a biomedical engineering lab, where I developed 
+      a CUDA kernel for real-time ultrasound guidance and applied deep learning to enhance ultrasound 
+      image quality. I also have published research on variational autoencoders (VAEs) and perception 
+      in augmented reality, the latter being the focus of my Master's thesis. Additionally, I have 
+      industry experience applying generative AI to real-world challenges at Accenture Federal Services.`.trim()
+
+    },
+    {
+      type: "paragraph",
+      text: `After completing my accelerated Master's program at Vanderbilt, 
+      I backpacked across Africa and Asia.`.trim()
     },
     {
       type: "image-row",
       images: [
         {
-          src: "/about/img1.jpeg",
-          caption:"Laos"
+          src: "/about/img3.jpeg",
+          caption: "Tanzania"
         },
         {
           src: "/about/img2.jpeg",
           caption: "Nepal"
         },
         {
-          src: "/about/img3.jpeg",
-          caption: "Tanzania"
+          src: "/about/img1.jpeg",
+          caption:"Laos"
         }
       ]
-    },
-    {
-      type: "paragraph",
-      text: `After completing my accelerated Master's program at Vanderbilt, 
-      I spent over a year solo backpacking across Africa and Asia. Since returning,
-       I have been working on various projects, preparing for interviews, and staying 
-       current with trends in tech, specifically machine learning, and generative AI.`.trim()
     }
   ];
 
@@ -173,7 +173,7 @@ function App() {
       id: 1,
       title: "PolicyAI",
       previewImage: "/projects/policy-bot/policybot.gif",
-      preview: "LLM and RAG powered chatbot that answers questions about the federal government's policies",
+      preview: "Full stack chatbot and document search powered by LLM agents to answer questions on federal policies",
       ongoing: true,
       github: "https://github.com/nshehadeh/policy-bot",
       content: [
@@ -226,7 +226,56 @@ function App() {
       categories: ["Full Stack", "LLMs"]
     },
     {
-      id: 2,
+      id: 9,
+      title: "BEAM Lab, Acoustic Window Detection & Image Quality Deep Learning",
+      preview: "Research done in Vanderbilt's Institute for Surgery and Engineering",
+      ongoing: false,
+      github: null, // Add if available
+      previewImage: "/projects/ultrasound/demo.gif",
+      content: [
+        {
+          type: "paragraph",
+          text: `
+          `.trim()
+        },
+        {
+          type: "image",
+          src: "/projects/ultrasound/demo.gif",
+          caption: "Real-time GUI assisting with probe placement during live transcranial ultrasound"
+        },
+        {
+          type: "paragraph",
+          text: `
+              My work in Vanderbilt's Institute for Surgery and Engineering (VISE) in Dr. Brett 
+              Byram's BEAM Lab began as a 10-week summer internship as a researcher under PhD student Emelina Vienneau. Emelina’s 
+              research focuses on enabling transcranial ultrasound imaging of the brain. 
+              I independently developed an acoustic window detection system that calculates 
+              the lag-one coherence of ultrasound images in real-time. Lag-one coherence 
+              serves as a metric for evaluating image quality at a specific point. My software
+              processed real-time ultrasound images, computed the lag-one coherence, and
+              displayed results via a GUI to guide the probe operator. The system was implemented
+              on a Verasonics ultrasound machine, using MATLAB, MEX (MATLAB's C interface), and 
+              CUDA for GPU processing.
+           `.trim()
+        },
+        {
+          type: "image",
+          src: "/projects/ultrasound/present.png",
+          caption: "Presenting my work at the VISE summer conference",
+          size: "medium"
+        },
+        {
+          type: "paragraph",
+          text: `
+          After presenting my work, I continued as a lab researcher for an additional year, optimizing the acoustic window detection algorithm through different thread and block configurations.
+          I also worked on a deep learning project to artificially improve ultrasound image quality post-collection. Using data from Emelina's work on coded excitation,
+          a technique used to increase the signal-to-noise ratio (SNR) of an ultrasound image during collection, I tested different CNN-based, deep learning architectures to 
+          artificially apply the same effect on previously collected data. My work resulted in some promising initial results, increasing SNR in phantom data by 15% using a UNET.`
+        }
+      ],
+      categories: ["Research", "Machine Learning", "Medical", "Computer Vision"]
+    },
+    {
       title: "XROG: Extended Reality Object Generation",
       preview: "Interactive AR environment that allows users to generate virtual objects with 3D sketches",
       previewImage: "/projects/xrog/gif_clip.gif",
@@ -280,59 +329,6 @@ function App() {
         categories: ["Mixed Reality"]
       },
       */
-      {
-        id: 7,
-        title: "Investigation of Presence in AR",
-        preview: "Master's Thesis building a HoloLens2 research platform for a user study on plausibility in AR",
-        previewImage: "/projects/thesis/full_scene.png",
-        ongoing: false,
-        github: "https://github.com/nshehadeh/ar_presence",
-        content:[
-          {
-            type: "paragraph",
-            text: `
-            My thesis investigates the factors contributing to a sense of presence in augmented reality (AR) by adapting principles 
-            from virtual reality (VR) and applying psychophysical methods. I conducted a user study in a controlled AR environment on 
-            the Hololens 2 headset, where participants interacted with virtual objects under different configurations. The study
-             systematically varied three essential factors to user perception in AR: interaction level, physics (e.g., gravity and collisions), and shadow realism. 
-             Using a Markov chain to analyze transition choices and a budgeting task to prioritize 
-             enhancements, I assessed which configurations led to the highest sense of realism. My results highlighted that realistic, 
-             interactive components were essential, with gravity emerging as a strong anchor for plausibility, followed by user-applied 
-             physics.
-            `.trim()
-          },
-          {
-            type: "image",
-            src: "/projects/thesis/full_scene.png",
-            caption: "Virtual Environment"
-          },
-          {
-            type: "paragraph",
-            text: `
-            In addition to capturing user preferences through configuration transitions and budgets, I included questionnaires to quantify 
-            plausibility levels, capturing how participants felt about object behavior in relation to real-world expectations. Findings showed 
-            that even basic interaction significantly enhanced plausibility, while more advanced features, like realistic shadows, were valued
-             for enhancing spatial perception but deemed secondary to physics and interaction. These results inform AR design by emphasizing 
-             the importance of functional fidelity, where realistic physics and baseline interaction heighten user presence and immersion. The
-              full thesis and code are available on my GitHub.
-            `.trim()
-          },
-          {
-            type: "image-row",
-            images: [
-              {
-                src: "/projects/thesis/steven.png",
-                caption: "A user interacting with the AR basketballs"
-              },
-              {
-                src: "/projects/thesis/transitiongraph.png",
-              caption: "Most common path chosen for transitions. {x, y, z} | x = interaction level, y = physics level, z = shadow level"
-              }
-            ]
-          }
-        ],
-        categories: ["Research", "Mixed Reality"]
-      },
       {
         id: 8,
         title: "SUDS: Image Steganography Sanitizer",
@@ -431,58 +427,75 @@ function App() {
         categories: ["Machine Learning", "Computer Vision", "Medical"]
       },
       {
-        id: 9,
-        title: "BEAM Lab, Acoustic Window Detection & Image Quality Deep Learning",
-        preview: "Research done in Vanderbilt's Institute for Surgery and Engineering",
+        id: 7,
+        title: "Investigation of Presence in AR",
+        preview: "Master's Thesis building a HoloLens2 research platform for a user study on plausibility in AR",
+        previewImage: "/projects/thesis/full_scene.png",
         ongoing: false,
-        github: null, // Add if available
-        previewImage: "/projects/ultrasound/demo.gif",
-        content: [
+        github: "https://github.com/nshehadeh/ar_presence",
+        content:[
           {
             type: "paragraph",
             text: `
+            My thesis investigates the factors contributing to a sense of presence in augmented reality (AR) by adapting principles 
+            from virtual reality (VR) and applying psychophysical methods. I conducted a user study in a controlled AR environment on 
+            the Hololens 2 headset, where participants interacted with virtual objects under different configurations. The study
+             systematically varied three essential factors to user perception in AR: interaction level, physics (e.g., gravity and collisions), and shadow realism. 
+             Using a Markov chain to analyze transition choices and a budgeting task to prioritize 
+             enhancements, I assessed which configurations led to the highest sense of realism. My results highlighted that realistic, 
+             interactive components were essential, with gravity emerging as a strong anchor for plausibility, followed by user-applied 
+             physics.
             `.trim()
           },
           {
             type: "image",
-            src: "/projects/ultrasound/demo.gif",
-            caption: "Real-time GUI assisting with probe placement during live transcranial ultrasound"
+            src: "/projects/thesis/full_scene.png",
+            caption: "Virtual Environment"
           },
           {
             type: "paragraph",
             text: `
-                My work in Vanderbilt's Institute for Surgery and Engineering (VISE) in Dr. Brett 
-                Byram's BEAM Lab began as a 10-week summer internship as a researcher under PhD student Emelina Vienneau. Emelina’s 
-                research focuses on enabling transcranial ultrasound imaging of the brain. 
-                I independently developed an acoustic window detection system that calculates 
-                the lag-one coherence of ultrasound images in real-time. Lag-one coherence 
-                serves as a metric for evaluating image quality at a specific point. My software
-                processed real-time ultrasound images, computed the lag-one coherence, and
-                displayed results via a GUI to guide the probe operator. The system was implemented
-                on a Verasonics ultrasound machine, using MATLAB, MEX (MATLAB's C interface), and 
-                CUDA for GPU processing.
-             `.trim()
+            In addition to capturing user preferences through configuration transitions and budgets, I included questionnaires to quantify 
+            plausibility levels, capturing how participants felt about object behavior in relation to real-world expectations. Findings showed 
+            that even basic interaction significantly enhanced plausibility, while more advanced features, like realistic shadows, were valued
+             for enhancing spatial perception but deemed secondary to physics and interaction. These results inform AR design by emphasizing 
+             the importance of functional fidelity, where realistic physics and baseline interaction heighten user presence and immersion. The
+              full thesis and code are available on my GitHub.
+            `.trim()
           },
           {
-            type: "image",
-            src: "/projects/ultrasound/present.png",
-            caption: "Presenting my work at the VISE summer conference",
-            size: "medium"
-          },
-          {
-            type: "paragraph",
-            text: `
-            After presenting my work, I continued as a lab researcher for an additional year, optimizing the acoustic window detection algorithm through different thread and block configurations.
-            I also worked on a deep learning project to artificially improve ultrasound image quality post-collection. Using data from Emelina's work on coded excitation,
-            a technique used to increase the signal-to-noise ratio (SNR) of an ultrasound image during collection, I tested different deep learning architectures to 
-            artificially apply the same effect on previously collected data. My work resulted in some promising initial results, increasing SNR in phantom data by 15% using a UNET.`
+            type: "image-row",
+            images: [
+              {
+                src: "/projects/thesis/steven.png",
+                caption: "A user interacting with the AR basketballs"
+              },
+              {
+                src: "/projects/thesis/transitiongraph.png",
+              caption: "Most common path chosen for transitions. {x, y, z} | x = interaction level, y = physics level, z = shadow level"
+              }
+            ]
           }
         ],
-        categories: ["Research", "Machine Learning", "Medical", "Computer Vision"]
-      }
+        categories: ["Research", "Mixed Reality"]
+      },
   ];
 
   const experiences = [
+    {
+      id: 0,
+      title: "Software Engineer",
+      company: "AviaryAI",
+      period: "February 2025 - Present",
+      preview: "Software engineer building AI voice agent tools for financial institutions",
+      description: "Detailed description of the role and responsibilities...",
+      achievements: [
+        "Next.js, OpenAI, Azure, and AWS for full-stack development of AI voice agents",
+        "YC-backed startup based in NYC"
+      ],
+      companyLogo: "/experiences/aviary.png"
+
+    },
     {
       id: 1,
       title: "Machine Learning Engineer Intern",
@@ -494,7 +507,7 @@ function App() {
         "Conducted research on the application and adaptation of emerging AI technologies for federal services",
         "Implemented CLIP-GEN to synthesize images to improve hotel classification in human trafficking photographs",
         "Used AWS EC2 for scalable data preprocessing and distributed multi-GPU training to reduce model training time",
-        "Fine-tuned CLIP to learn latent state representations of hotel picture and location pairs using HuggingFace and multi-GPU training, resulting in 98% accuracy classifying hotel chains and the generation of basic synthetic images"
+        "Fine-tuned CLIP to learn latent state representations of hotel picture and location pairs using HuggingFace, resulting in 98% accuracy classifying hotel chains and the generation of basic synthetic images"
       ],
       companyLogo: "/experiences/afs-logo.jpg"
     },
@@ -557,7 +570,7 @@ function App() {
             <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
               Nishan Shehadeh
             </h1>
-            <p className="text-gray-600 mb-4">Recent Graduate with a Master's in Computer Science</p>
+          <p className="text-gray-600 mb-4">Software Engineer | M.S. Computer Science</p>
             <div className="flex gap-4">
               <a href="https://github.com/nshehadeh" className="text-gray-600 hover:text-blue-600 transition-colors">
                 <Github className="h-5 w-5" />
@@ -909,7 +922,9 @@ function App() {
                 <Card>
                     <CardContent className="pt-6">
                     <div className="flex justify-between items-center mb-6">
-                        <h2 className="text-2xl font-semibold">Resume</h2>
+                      <div><h2 className="text-2xl font-semibold">Resume</h2>
+                      <h5 className="text-sm text-red-500 underline underline-red-600 pt-2" >Not up to date</h5> </div>
+                        
                         <a 
                         href="/resume/nishan-shehadeh-resume.pdf"
                         download
