@@ -490,7 +490,7 @@ function App() {
       preview: "Software engineer building AI voice agent tools for financial institutions",
       description: "Detailed description of the role and responsibilities...",
       achievements: [
-        "Next.js, OpenAI, Azure, and AWS for full-stack development of AI voice agents",
+        "AI/ML/Backend engineer for voice agent and knowledge base platforms",
         "YC-backed startup based in NYC"
       ],
       companyLogo: "/experiences/aviary.png"
